@@ -377,7 +377,6 @@ def main():
     )
     aggregator = EvidenceAggregator(rules_path=config.FRESHNESS_RULES_PATH)
     llm_service = LLMFreshnessService(
-        api_key=config.OPENAI_API_KEY,
         model=config.LLM_MODEL,
         timeout=config.LLM_TIMEOUT,
     )

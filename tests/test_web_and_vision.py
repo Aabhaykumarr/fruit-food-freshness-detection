@@ -75,3 +75,22 @@ def test_hierarchical_vision_result_structure():
     assert "confidence" in result
     assert "visual_description" in result
     assert "latency_ms" in result
+
+
+def test_render_yaml_configuration():
+    """Verify render.yaml structure, syntax, and Gemini environment configuration."""
+    from pathlib import Path
+    import re
+
+    render_path = Path("render.yaml")
+    assert render_path.exists(), "render.yaml must exist in repository root"
+    content = render_path.read_text()
+
+    assert "type: web" in content
+    assert "env: python" in content
+    assert "buildCommand:" in content
+    assert "startCommand:" in content
+    assert "streamlit run web_app.py" in content
+    assert "GEMINI_API_KEY" in content
+    assert "OPENAI_API_KEY" not in content
+

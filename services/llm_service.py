@@ -1,6 +1,6 @@
 """
 LLM Freshness Reasoning Service.
-Uses OpenAI GPT-4o-mini with structured outputs (Pydantic schema enforcement)
+Uses Google Gemini (Primary) or OpenAI (Optional) with structured outputs (Pydantic schema enforcement)
 and Multimodal Vision (base64 image inspection).
 
 Rules enforced:

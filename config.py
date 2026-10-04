@@ -16,7 +16,8 @@ load_dotenv()
 # Primary Multimodal Vision Backend: Google Gemini Multimodal Vision (Free-Tier)
 VISION_PRIMARY_BACKEND = os.getenv("VISION_PRIMARY_BACKEND", "gemini")  # "gemini", "multimodal_openai", or "siglip"
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", os.getenv("GOOGLE_API_KEY", ""))
-GEMINI_VISION_MODEL = os.getenv("GEMINI_VISION_MODEL", "gemini-3.8-flash")
+GEMINI_VISION_MODEL = os.getenv("GEMINI_VISION_MODEL", os.getenv("GEMINI_MODEL", "gemini-3.8-flash"))
+GEMINI_MODEL = GEMINI_VISION_MODEL
 
 # Optional Secondary Provider: OpenAI Vision Model
 OPENAI_VISION_MODEL = os.getenv("OPENAI_VISION_MODEL", "gpt-4o-mini")

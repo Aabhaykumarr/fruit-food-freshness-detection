@@ -386,6 +386,24 @@ fruit_detection/
 
 ---
 
+## Deploying to Render (Cloud Hosting)
+
+This project is configured for cloud deployment on [Render](https://render.com) using the included `render.yaml` and `Procfile`:
+
+1. Push your repository to GitHub.
+2. In the [Render Dashboard](https://dashboard.render.com), click **New + -> Blueprint** and connect your repository.
+3. Render will automatically detect `render.yaml` and configure the web service with:
+   - **Environment**: Python 3.11
+   - **Build Command**: `pip install --upgrade pip && pip install -r requirements.txt`
+   - **Start Command**: `streamlit run web_app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true`
+4. In the Render service dashboard under **Environment Variables**, set:
+   - `GEMINI_API_KEY`: Your Google Gemini API Key (keep secret)
+   - `GEMINI_VISION_MODEL`: `gemini-3.8-flash` (or `gemini-2.5-flash`)
+   - `VISION_PRIMARY_BACKEND`: `gemini`
+5. Click **Apply / Deploy**. Your Streamlit dashboard will be live at `https://<your-service-name>.onrender.com`.
+
+---
+
 ## Hardware Requirements
 
 If deploying with physical hardware:

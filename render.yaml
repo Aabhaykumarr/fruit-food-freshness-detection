@@ -6,7 +6,15 @@ services:
     buildCommand: pip install --upgrade pip && pip install -r requirements.txt
     startCommand: streamlit run web_app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true
     envVars:
-      - key: OPENAI_API_KEY
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: GEMINI_API_KEY
         sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash
+      - key: GEMINI_VISION_MODEL
+        value: gemini-3.8-flash
+      - key: VISION_PRIMARY_BACKEND
+        value: gemini
       - key: LOG_LEVEL
         value: INFO

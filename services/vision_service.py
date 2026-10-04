@@ -2,14 +2,16 @@
 Multimodal Vision Pipeline & Hierarchical Vision Service for Food & Fruit Recognition.
 
 Architecture:
-1. PRIMARY: Multimodal Vision Model (OpenAI Vision API via OPENAI_VISION_MODEL, e.g. gpt-4o-mini).
+1. PRIMARY: Google Gemini Multimodal Vision (via GEMINI_VISION_MODEL, e.g. gemini-3.8-flash).
    - Full scene inspection without downscaling or aggressive cropping.
    - Multi-item enumeration (up to 8 items) with independent identities and condition assessment.
    - Food-specific condition spectra (underripe, ripe, overripe, bruised, wilted, stale, moldy, rotten).
    - Clear distinction between food identity, ripeness, cosmetic damage, and actual spoilage.
    - Non-food negative rejection (electronics, faces, furniture, vehicles, household items).
    - Calibrated uncertainty for ambiguous or out-of-distribution items.
-2. FALLBACK: SigLIP Zero-Shot Vision-Language Classifier (google/siglip-base-patch16-224).
+   - Fast-fail with 0 retries on 429 RESOURCE_EXHAUSTED.
+2. SECONDARY (OPTIONAL): OpenAI Vision Model (via OPENAI_VISION_MODEL, e.g. gpt-4o-mini).
+3. FALLBACK: SigLIP Zero-Shot Vision-Language Classifier (google/siglip-base-patch16-224).
    - 3-stage local pipeline: non-food gate -> ontology classification -> observable attributes.
    - Used when offline, API key missing, or on API failure, clearly labeled as 'local_siglip_fallback'.
 """
