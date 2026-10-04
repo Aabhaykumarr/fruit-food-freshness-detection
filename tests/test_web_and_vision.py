@@ -92,5 +92,6 @@ def test_render_yaml_configuration():
     assert "startCommand:" in content
     assert "streamlit run web_app.py" in content
     assert "GEMINI_API_KEY" in content
+    assert "gemini-3.5-flash-lite" in content
     assert "OPENAI_API_KEY" not in content
 

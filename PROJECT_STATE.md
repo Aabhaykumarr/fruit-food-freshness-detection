@@ -12,7 +12,7 @@
 ## Completed Milestones
 
 - [x] Implemented **Hierarchical Vision Pipeline (`services/vision_service.py`)**:
-  - Primary: Google Gemini (`gemini-3.8-flash`) with structured JSON schema (`ImageVisionResult`).
+  - Primary: Google Gemini (`gemini-3.5-flash-lite`) with structured JSON schema (`ImageVisionResult`).
   - Secondary: OpenAI Vision (`gpt-4o-mini`) structured completion.
   - Local Fallback: Google SigLIP (`google/siglip-base-patch16-224`) with zero-shot non-food gate and 45+ class ontology.
 - [x] Implemented **Fast-Fail Rate-Limit & Quota Handling**:

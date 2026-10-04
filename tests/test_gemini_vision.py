@@ -37,9 +37,9 @@ from services.llm_service import LLMFreshnessService, FreshnessAnalysis
 def test_gemini_vision_service_init_default():
     """Verify GeminiVisionService initializes with correct defaults."""
     with patch("google.genai.Client") as mock_client_cls:
-        service = GeminiVisionService(api_key="test-gemini-key", model="gemini-3.8-flash")
+        service = GeminiVisionService(api_key="test-gemini-key", model="gemini-3.5-flash-lite")
         assert service.api_key == "test-gemini-key"
-        assert service.model == "gemini-3.8-flash"
+        assert service.model == "gemini-3.5-flash-lite"
         assert service.client is not None
         mock_client_cls.assert_called_once_with(api_key="test-gemini-key")
 
@@ -460,7 +460,7 @@ def test_llm_freshness_service_gemini_reasoning():
             mock_response.text = json.dumps(reasoning_payload)
             mock_client.models.generate_content.return_value = mock_response
 
-            llm_service = LLMFreshnessService(api_key="test-gemini-key", model="gemini-3.8-flash")
+            llm_service = LLMFreshnessService(api_key="test-gemini-key", model="gemini-3.5-flash-lite")
 
             packet = {
                 "status": "recognized",
@@ -495,7 +495,7 @@ def test_llm_freshness_service_gemini_chat():
             mock_response.text = "You can keep this apple at room temperature for up to 5 days, or refrigerate it to extend its life."
             mock_client.models.generate_content.return_value = mock_response
 
-            llm_service = LLMFreshnessService(api_key="test-gemini-key", model="gemini-3.8-flash")
+            llm_service = LLMFreshnessService(api_key="test-gemini-key", model="gemini-3.5-flash-lite")
 
             context = {
                 "detected_food": "apple",
@@ -588,7 +588,7 @@ def test_llm_chat_quota_exhausted_immediate_fallback_message():
             mock_client_cls.return_value = mock_client
             mock_client.models.generate_content.side_effect = Exception("429 RESOURCE_EXHAUSTED: Free tier quota exceeded.")
 
-            llm_service = LLMFreshnessService(api_key="test-gemini-key", model="gemini-3.8-flash")
+            llm_service = LLMFreshnessService(api_key="test-gemini-key", model="gemini-3.5-flash-lite")
             reply = llm_service.chat_about_analysis(
                 analysis_context={"detected_food": "banana"},
                 conversation_history=[],

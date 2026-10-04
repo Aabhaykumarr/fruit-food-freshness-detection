@@ -2,7 +2,7 @@
 Multimodal Vision Pipeline & Hierarchical Vision Service for Food & Fruit Recognition.
 
 Architecture:
-1. PRIMARY: Google Gemini Multimodal Vision (via GEMINI_VISION_MODEL, e.g. gemini-3.8-flash).
+1. PRIMARY: Google Gemini Multimodal Vision (via GEMINI_VISION_MODEL, e.g. gemini-3.5-flash-lite).
    - Full scene inspection without downscaling or aggressive cropping.
    - Multi-item enumeration (up to 8 items) with independent identities and condition assessment.
    - Food-specific condition spectra (underripe, ripe, overripe, bruised, wilted, stale, moldy, rotten).
@@ -54,7 +54,7 @@ except ImportError:
     UNCERTAIN_MARGIN_THRESHOLD = 0.04
     VISION_PRIMARY_BACKEND = "gemini"
     GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", os.getenv("GOOGLE_API_KEY", ""))
-    GEMINI_VISION_MODEL = os.getenv("GEMINI_VISION_MODEL", "gemini-3.8-flash")
+    GEMINI_VISION_MODEL = os.getenv("GEMINI_VISION_MODEL", os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite"))
     OPENAI_VISION_MODEL = "gpt-4o-mini"
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
@@ -177,13 +177,13 @@ CRITICAL INSPECTION RULES:
 
 class GeminiVisionService:
     """
-    Primary vision service utilizing Google Gemini Multimodal Vision API (e.g., gemini-3.8-flash)
+    Primary vision service utilizing Google Gemini Multimodal Vision API (e.g., gemini-3.5-flash-lite)
     with Pydantic structured output enforcement for multi-item food scene understanding.
     """
 
     def __init__(self, api_key: Optional[str] = None, model: Optional[str] = None, timeout: float = 30.0):
         self.api_key = api_key if api_key is not None else (GEMINI_API_KEY or os.getenv("GEMINI_API_KEY", os.getenv("GOOGLE_API_KEY", "")))
-        self.model = model if model is not None else (GEMINI_VISION_MODEL or os.getenv("GEMINI_VISION_MODEL", "gemini-3.8-flash"))
+        self.model = model if model is not None else (GEMINI_VISION_MODEL or os.getenv("GEMINI_VISION_MODEL", os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")))
         self.timeout = timeout
         self.client = None
         self._init_client()
@@ -1135,7 +1135,7 @@ class VisionService:
     """
     Unified Vision Service coordinator.
     Provider priority:
-      1. Google Gemini Multimodal Vision (Primary, e.g. gemini-3.8-flash)
+      1. Google Gemini Multimodal Vision (Primary, e.g. gemini-3.5-flash-lite)
       2. OpenAI Multimodal Vision (Optional secondary, if explicitly configured)
       3. Google SigLIP Zero-Shot Vision (Local offline fallback)
     """

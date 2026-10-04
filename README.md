@@ -88,7 +88,7 @@ This project implements a multi-stage, multi-sensor pipeline designed to:
                        ▼                 ▼                 ▼
                 [PRIMARY VISION]  [SECONDARY VISION]  [OFFLINE LOCAL VISION]
                  Google Gemini      OpenAI Vision         Google SigLIP
-                (gemini-3.8-flash)  (gpt-4o-mini)      (Zero-shot non-food gate,
+             (gemini-3.5-flash-lite)(gpt-4o-mini)      (Zero-shot non-food gate,
                  Structured Output Structured Output   45+ food ontology,
                  0-retry on 429     (Optional API)     condition classifier)
                        └─────────────────┬─────────────────┘
@@ -121,7 +121,7 @@ This project implements a multi-stage, multi-sensor pipeline designed to:
 The vision subsystem (`services/vision_service.py`) operates in a resilient tiered hierarchy:
 
 ### Primary Vision: Google Gemini
-- **Model**: `gemini-3.8-flash` (via `google-genai` SDK).
+- **Model**: `gemini-3.5-flash-lite` (via `google-genai` SDK).
 - **Structured Schema**: Uses Pydantic models (`ImageVisionResult`, `ItemVisionResult`) for deterministic JSON parsing.
 - **Attributes Analyzed**: Primary food class, confidence score, bounding boxes, freshness condition, visible defects (browning, wrinkling, bruising, mold colonies), surface moisture, and qualitative observations.
 - **Quota & Error Handling**:
@@ -278,7 +278,8 @@ Edit `.env` with your API configuration:
 ```env
 # Primary Multimodal Vision & Reasoning (Google Gemini)
 GEMINI_API_KEY=your_gemini_api_key_here
-GEMINI_MODEL=gemini-3.8-flash
+GEMINI_MODEL=gemini-3.5-flash-lite
+GEMINI_VISION_MODEL=gemini-3.5-flash-lite
 
 # Secondary Multimodal Vision (OpenAI - Optional)
 OPENAI_API_KEY=your_openai_api_key_here
@@ -398,7 +399,8 @@ This project is configured for cloud deployment on [Render](https://render.com) 
    - **Start Command**: `streamlit run web_app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true`
 4. In the Render service dashboard under **Environment Variables**, set:
    - `GEMINI_API_KEY`: Your Google Gemini API Key (keep secret)
-   - `GEMINI_VISION_MODEL`: `gemini-3.8-flash` (or `gemini-2.5-flash`)
+   - `GEMINI_VISION_MODEL`: `gemini-3.5-flash-lite`
+   - `GEMINI_MODEL`: `gemini-3.5-flash-lite`
    - `VISION_PRIMARY_BACKEND`: `gemini`
 5. Click **Apply / Deploy**. Your Streamlit dashboard will be live at `https://<your-service-name>.onrender.com`.
 

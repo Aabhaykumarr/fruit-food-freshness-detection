@@ -35,7 +35,7 @@ try:
         LLM_MODEL,
     )
 except ImportError:
-    GEMINI_VISION_MODEL = os.getenv("GEMINI_VISION_MODEL", "gemini-3.8-flash")
+    GEMINI_VISION_MODEL = os.getenv("GEMINI_VISION_MODEL", os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite"))
     GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", os.getenv("GOOGLE_API_KEY", ""))
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
     OPENAI_VISION_MODEL = os.getenv("OPENAI_VISION_MODEL", "gpt-4o-mini")
@@ -134,7 +134,7 @@ class LLMFreshnessService:
         else:
             self.gemini_api_key = GEMINI_API_KEY or os.getenv("GEMINI_API_KEY", os.getenv("GOOGLE_API_KEY", ""))
             self.openai_api_key = OPENAI_API_KEY or os.getenv("OPENAI_API_KEY", "")
-        self.gemini_model = model if model is not None else (GEMINI_VISION_MODEL or os.getenv("GEMINI_VISION_MODEL", "gemini-3.8-flash"))
+        self.gemini_model = model if model is not None else (GEMINI_VISION_MODEL or os.getenv("GEMINI_VISION_MODEL", os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")))
         self.openai_model = OPENAI_VISION_MODEL or os.getenv("OPENAI_VISION_MODEL", "gpt-4o-mini")
         self.timeout = timeout
         self.gemini_client = None

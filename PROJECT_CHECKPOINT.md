@@ -20,7 +20,7 @@
                  ┌───────────────────┼───────────────────┐
                  ▼                   ▼                   ▼
     [1. PRIMARY: Gemini Vision] [2. OPTIONAL: OpenAI] [3. FALLBACK: SigLIP Local]
-       (gemini-3.8-flash)         (gpt-4o-mini)       (google/siglip-base-patch16-224)
+       (gemini-3.5-flash-lite)    (gpt-4o-mini)       (google/siglip-base-patch16-224)
      - Full image prompt        - Only if configured   - 3-stage local pipeline
      - Multi-item (<=8)         - Optional backup      - Labeled "local_siglip_fallback"
      - Structured JSON schema
@@ -55,15 +55,15 @@
 ---
 
 ## 2. Current Primary Vision Model
-- **Model**: `gemini-3.8-flash` (Google Gemini 3.8 Flash Multimodal Vision via `google.genai` SDK).
+- **Model**: `gemini-3.5-flash-lite` (Google Gemini 3.5 Flash-Lite Multimodal Vision via `google.genai` SDK).
 - **Capabilities**: Full-resolution RGB visual recognition, multi-item visual scene decomposition (up to 8 items), rich condition spectrum, and Pydantic structured output enforcement.
 
 ---
 
 ## 3. Gemini API Configuration
 - `GEMINI_API_KEY`: Loaded securely from `.env` or system environment (never hardcoded in source code, logs, UI, or checkpoints).
-- `GEMINI_VISION_MODEL`: Configured as `gemini-3.8-flash` in `config.py` (serving as the single source of truth for both `GeminiVisionService` and `LLMFreshnessService`).
-- **Security Rule**: API keys are strictly kept confidential; startup logs report only the model identifier (`Gemini vision initialized with model: gemini-3.8-flash`).
+- `GEMINI_VISION_MODEL`: Configured as `gemini-3.5-flash-lite` in `config.py` (serving as the single source of truth for both `GeminiVisionService` and `LLMFreshnessService`).
+- **Security Rule**: API keys are strictly kept confidential; startup logs report only the model identifier (`Gemini vision initialized with model: gemini-3.5-flash-lite`).
 
 ---
 
@@ -119,7 +119,7 @@
 ---
 
 ## 10. Real Gemini Live API Verification Completed
-- **Model**: `gemini-3.8-flash`
+- **Model**: `gemini-3.5-flash-lite`
 - **HTTP / API Status**: **SUCCESS** via `google.genai` SDK with real API key.
 - **Test Image**: `evaluation/fruits/apple_01.jpg`
 - **Verified Output**:

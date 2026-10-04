@@ -34,7 +34,7 @@
                        ▼                 ▼                 ▼
                 [PRIMARY VISION]  [SECONDARY VISION]  [OFFLINE LOCAL VISION]
                  Google Gemini      OpenAI Vision         Google SigLIP
-                (gemini-3.8-flash)  (gpt-4o-mini)      (Zero-shot non-food gate,
+             (gemini-3.5-flash-lite)(gpt-4o-mini)      (Zero-shot non-food gate,
                  Structured Output Structured Output   45+ food ontology,
                  0-retry on 429     (Optional API)     condition classifier)
                        └─────────────────┬─────────────────┘
@@ -72,7 +72,7 @@
 ## 2. Core Subsystems
 
 ### A. Hierarchical Vision Subsystem (`services/vision_service.py`)
-- **Primary Cloud Vision**: Google Gemini (`gemini-3.8-flash`) via `google-genai` with Pydantic structured output (`ImageVisionResult`). Evaluates visual freshness cues, color shifts, surface degradation, mold presence, and condition confidence. Implements fast-fail with zero retries on 429 `RESOURCE_EXHAUSTED` (rate-limit/quota handling) to immediately trigger fallback.
+- **Primary Cloud Vision**: Google Gemini (`gemini-3.5-flash-lite`) via `google-genai` with Pydantic structured output (`ImageVisionResult`). Evaluates visual freshness cues, color shifts, surface degradation, mold presence, and condition confidence. Implements fast-fail with zero retries on 429 `RESOURCE_EXHAUSTED` (rate-limit/quota handling) to immediately trigger fallback.
 - **Secondary Cloud Vision**: OpenAI Vision (`gpt-4o-mini`) structured completion if Gemini is unavailable and `OPENAI_API_KEY` is provided.
 - **Local Offline Fallback Vision**: Google SigLIP (`google/siglip-base-patch16-224`) running entirely locally:
   - *Stage 1*: Zero-shot non-food rejection gate.
