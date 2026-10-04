@@ -1,0 +1,416 @@
+[
+  {
+    "filename": "plain_rice_01.jpg",
+    "category": "staples",
+    "expected_class": "rice",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\staples\\plain_rice_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\staples\\plain_rice_01.jpg",
+    "description": "Steamed white plain rice in a ceramic bowl on wooden table"
+  },
+  {
+    "filename": "plain_rice_02.jpg",
+    "category": "staples",
+    "expected_class": "rice",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\staples\\plain_rice_02.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\staples\\plain_rice_02.jpg",
+    "description": "Cooked white basmati rice plate top view"
+  },
+  {
+    "filename": "plain_rice_03.jpg",
+    "category": "staples",
+    "expected_class": "rice",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\staples\\plain_rice_03.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\staples\\plain_rice_03.jpg",
+    "description": "Plain boiled white rice close-up"
+  },
+  {
+    "filename": "fried_rice_01.jpg",
+    "category": "staples",
+    "expected_class": "fried_rice",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\staples\\fried_rice_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\staples\\fried_rice_01.jpg",
+    "description": "Chinese vegetable egg fried rice in a wok bowl"
+  },
+  {
+    "filename": "roti_01.jpg",
+    "category": "staples",
+    "expected_class": "roti",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\staples\\roti_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\staples\\roti_01.jpg",
+    "description": "Fresh Indian roti flatbread with charred brown spots"
+  },
+  {
+    "filename": "paratha_01.jpg",
+    "category": "staples",
+    "expected_class": "paratha",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\staples\\paratha_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\staples\\paratha_01.jpg",
+    "description": "Shallow-fried layered aloo paratha flatbread"
+  },
+  {
+    "filename": "naan_01.jpg",
+    "category": "staples",
+    "expected_class": "naan",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\staples\\naan_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\staples\\naan_01.jpg",
+    "description": "Tandoori garlic butter naan bread with blistered crust"
+  },
+  {
+    "filename": "dal_01.jpg",
+    "category": "lentils",
+    "expected_class": "dal",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\lentils\\dal_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\lentils\\dal_01.jpg",
+    "description": "Yellow dal tadka lentil soup with tempering in a bowl"
+  },
+  {
+    "filename": "dal_02.jpg",
+    "category": "lentils",
+    "expected_class": "sambar",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\lentils\\dal_02.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\lentils\\dal_02.jpg",
+    "description": "South Indian vegetable sambar with drumstick, mustard seeds, curry leaves, and lentil base"
+  },
+  {
+    "filename": "rajma_01.jpg",
+    "category": "lentils",
+    "expected_class": "rajma",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\lentils\\rajma_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\lentils\\rajma_01.jpg",
+    "description": "Red kidney bean curry in thick spiced tomato gravy"
+  },
+  {
+    "filename": "chole_01.jpg",
+    "category": "lentils",
+    "expected_class": "chole",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\lentils\\chole_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\lentils\\chole_01.jpg",
+    "description": "Spiced North Indian chana masala / chole chickpea curry"
+  },
+  {
+    "filename": "biryani_01.jpg",
+    "category": "indian_dishes",
+    "expected_class": "biryani",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\indian_dishes\\biryani_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\indian_dishes\\biryani_01.jpg",
+    "description": "Fragrant basmati chicken dum biryani in brass bowl"
+  },
+  {
+    "filename": "biryani_02.jpg",
+    "category": "indian_dishes",
+    "expected_class": "biryani",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\indian_dishes\\biryani_02.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\indian_dishes\\biryani_02.jpg",
+    "description": "Spiced chicken biryani garnished with fried onions"
+  },
+  {
+    "filename": "paneer_01.jpg",
+    "category": "indian_dishes",
+    "expected_class": "paneer",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\indian_dishes\\paneer_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\indian_dishes\\paneer_01.jpg",
+    "description": "Paneer butter masala cottage cheese in creamy tomato gravy"
+  },
+  {
+    "filename": "samosa_01.jpg",
+    "category": "indian_dishes",
+    "expected_class": "samosa",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\indian_dishes\\samosa_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\indian_dishes\\samosa_01.jpg",
+    "description": "Crispy fried golden samosas with spiced potato filling"
+  },
+  {
+    "filename": "dosa_01.jpg",
+    "category": "indian_dishes",
+    "expected_class": "dosa",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\indian_dishes\\dosa_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\indian_dishes\\dosa_01.jpg",
+    "description": "Crispy golden South Indian masala dosa crepe with chutney"
+  },
+  {
+    "filename": "idli_01.jpg",
+    "category": "indian_dishes",
+    "expected_class": "idli",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\indian_dishes\\idli_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\indian_dishes\\idli_01.jpg",
+    "description": "Steamed white idli savory rice cakes with sambar dip"
+  },
+  {
+    "filename": "rajma_chawal_01.jpg",
+    "category": "indian_dishes",
+    "expected_class": "rajma_chawal",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\indian_dishes\\rajma_chawal_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\indian_dishes\\rajma_chawal_01.jpg",
+    "description": "Plate combining plain steamed rice and red kidney bean rajma curry"
+  },
+  {
+    "filename": "rice_dal_combo_01.jpg",
+    "category": "indian_dishes",
+    "expected_class": "rice_dal_combo",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\indian_dishes\\rice_dal_combo_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\indian_dishes\\rice_dal_combo_01.jpg",
+    "description": "Plate served with yellow dal poured over steamed white rice"
+  },
+  {
+    "filename": "thali_mixed_01.jpg",
+    "category": "indian_dishes",
+    "expected_class": "thali_mixed",
+    "expected_type": "cooked_food",
+    "relative_path": "evaluation\\real_world_validation\\indian_dishes\\thali_mixed_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\indian_dishes\\thali_mixed_01.jpg",
+    "description": "Full Indian thali metal platter with multiple bowls of curries, dal, roti and rice"
+  },
+  {
+    "filename": "pizza_01.jpg",
+    "category": "western_foods",
+    "expected_class": "pizza",
+    "expected_type": "food",
+    "relative_path": "evaluation\\real_world_validation\\western_foods\\pizza_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\western_foods\\pizza_01.jpg",
+    "description": "Cheesy baked pizza slice on wooden board"
+  },
+  {
+    "filename": "burger_01.jpg",
+    "category": "western_foods",
+    "expected_class": "burger",
+    "expected_type": "food",
+    "relative_path": "evaluation\\real_world_validation\\western_foods\\burger_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\western_foods\\burger_01.jpg",
+    "description": "Juicy beef burger with toasted bun and cheese"
+  },
+  {
+    "filename": "pasta_01.jpg",
+    "category": "western_foods",
+    "expected_class": "pasta",
+    "expected_type": "food",
+    "relative_path": "evaluation\\real_world_validation\\western_foods\\pasta_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\western_foods\\pasta_01.jpg",
+    "description": "Spaghetti pasta with red tomato sauce and basil"
+  },
+  {
+    "filename": "sandwich_01.jpg",
+    "category": "western_foods",
+    "expected_class": "sandwich",
+    "expected_type": "food",
+    "relative_path": "evaluation\\real_world_validation\\western_foods\\sandwich_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\western_foods\\sandwich_01.jpg",
+    "description": "Toasted grilled cheese sandwich cut in halves"
+  },
+  {
+    "filename": "apple_01.jpg",
+    "category": "fruits",
+    "expected_class": "apple",
+    "expected_type": "fruit",
+    "relative_path": "evaluation\\real_world_validation\\fruits\\apple_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\fruits\\apple_01.jpg",
+    "description": "Fresh whole red apple on white background"
+  },
+  {
+    "filename": "banana_01.jpg",
+    "category": "fruits",
+    "expected_class": "banana",
+    "expected_type": "fruit",
+    "relative_path": "evaluation\\real_world_validation\\fruits\\banana_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\fruits\\banana_01.jpg",
+    "description": "Bunch of ripe yellow bananas on table"
+  },
+  {
+    "filename": "mango_01.jpg",
+    "category": "fruits",
+    "expected_class": "mango",
+    "expected_type": "fruit",
+    "relative_path": "evaluation\\real_world_validation\\fruits\\mango_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\fruits\\mango_01.jpg",
+    "description": "Ripe sweet yellow mango"
+  },
+  {
+    "filename": "orange_01.jpg",
+    "category": "fruits",
+    "expected_class": "orange",
+    "expected_type": "fruit",
+    "relative_path": "evaluation\\real_world_validation\\fruits\\orange_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\fruits\\orange_01.jpg",
+    "description": "Fresh whole citrus orange fruit"
+  },
+  {
+    "filename": "dimsum_01.jpg",
+    "category": "unknown_dish",
+    "expected_class": "unknown_food",
+    "expected_type": "food",
+    "relative_path": "evaluation\\real_world_validation\\unknown_dish\\dimsum_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\unknown_dish\\dimsum_01.jpg",
+    "description": "Steamed Chinese dim sum dumplings in bamboo basket"
+  },
+  {
+    "filename": "paella_01.jpg",
+    "category": "unknown_dish",
+    "expected_class": "unknown_food",
+    "expected_type": "food",
+    "relative_path": "evaluation\\real_world_validation\\unknown_dish\\paella_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\unknown_dish\\paella_01.jpg",
+    "description": "Spanish seafood paella pan with mussels, shrimp and saffron rice"
+  },
+  {
+    "filename": "rambutan_01.jpg",
+    "category": "unknown_dish",
+    "expected_class": "unknown_food",
+    "expected_type": "food",
+    "relative_path": "evaluation\\real_world_validation\\unknown_dish\\rambutan_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\unknown_dish\\rambutan_01.jpg",
+    "description": "Hairy exotic tropical rambutan fruit"
+  },
+  {
+    "filename": "phone_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "relative_path": "evaluation\\real_world_validation\\non_food\\phone_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\non_food\\phone_01.jpg",
+    "description": "Modern smartphone on dark table"
+  },
+  {
+    "filename": "laptop_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "relative_path": "evaluation\\real_world_validation\\non_food\\laptop_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\non_food\\laptop_01.jpg",
+    "description": "Open laptop computer on office desk"
+  },
+  {
+    "filename": "keys_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "relative_path": "evaluation\\real_world_validation\\non_food\\keys_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\non_food\\keys_01.jpg",
+    "description": "Set of metal house keys on a wooden surface"
+  },
+  {
+    "filename": "watch_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "relative_path": "evaluation\\real_world_validation\\non_food\\watch_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\non_food\\watch_01.jpg",
+    "description": "Wristwatch timepiece with leather strap"
+  },
+  {
+    "filename": "person_face_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "relative_path": "evaluation\\real_world_validation\\non_food\\person_face_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\non_food\\person_face_01.jpg",
+    "description": "Portrait photo of a young woman"
+  },
+  {
+    "filename": "book_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "relative_path": "evaluation\\real_world_validation\\non_food\\book_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\non_food\\book_01.jpg",
+    "description": "Paperback book lying open on a desk"
+  },
+  {
+    "filename": "water_bottle_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "relative_path": "evaluation\\real_world_validation\\non_food\\water_bottle_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\non_food\\water_bottle_01.jpg",
+    "description": "Reusable stainless steel water bottle"
+  },
+  {
+    "filename": "mouse_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "relative_path": "evaluation\\real_world_validation\\non_food\\mouse_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\non_food\\mouse_01.jpg",
+    "description": "Wireless computer optical mouse"
+  },
+  {
+    "filename": "headphones_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "relative_path": "evaluation\\real_world_validation\\non_food\\headphones_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\non_food\\headphones_01.jpg",
+    "description": "Over-ear audio headphones on plain background"
+  },
+  {
+    "filename": "charger_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "relative_path": "evaluation\\real_world_validation\\non_food\\charger_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\non_food\\charger_01.jpg",
+    "description": "White USB phone power adapter and charging cable"
+  },
+  {
+    "filename": "coffee_mug_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "relative_path": "evaluation\\real_world_validation\\non_food\\coffee_mug_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\non_food\\coffee_mug_01.jpg",
+    "description": "Ceramic coffee mug cup on table"
+  },
+  {
+    "filename": "pen_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "relative_path": "evaluation\\real_world_validation\\non_food\\pen_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\non_food\\pen_01.jpg",
+    "description": "Ballpoint writing pen on notebook"
+  },
+  {
+    "filename": "shoe_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "relative_path": "evaluation\\real_world_validation\\non_food\\shoe_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\non_food\\shoe_01.jpg",
+    "description": "Red athletic sneaker running shoe"
+  },
+  {
+    "filename": "car_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "relative_path": "evaluation\\real_world_validation\\non_food\\car_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\non_food\\car_01.jpg",
+    "description": "Modern sports car on city street"
+  },
+  {
+    "filename": "cat_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "relative_path": "evaluation\\real_world_validation\\non_food\\cat_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\real_world_validation\\non_food\\cat_01.jpg",
+    "description": "Domestic pet cat portrait"
+  }
+]

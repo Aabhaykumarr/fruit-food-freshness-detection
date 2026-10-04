@@ -1,0 +1,1345 @@
+{
+  "model_name": "Production Hierarchical Gated SigLIP Vision Service",
+  "total_images": 46,
+  "overall_accuracy_pct": 100.0,
+  "overall_correct": 46,
+  "food_recognition_accuracy_pct": 100.0,
+  "food_correct": 28,
+  "food_total": 28,
+  "non_food_rejection_rate_pct": 100.0,
+  "non_food_rejected": 15,
+  "non_food_total": 15,
+  "false_food_rate_pct": 0.0,
+  "unknown_handling_rate_pct": 100.0,
+  "unknown_handled": 3,
+  "unknown_total": 3,
+  "avg_latency_ms": 425.3,
+  "detailed_results": [
+    {
+      "filename": "plain_rice_01.jpg",
+      "category": "staples",
+      "expected_class": "rice",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "rice",
+      "pred_category": "staple",
+      "confidence": 0.918,
+      "visual_description": "Steamed white plain basmati rice grains",
+      "is_correct": true,
+      "latency_ms": 680.6,
+      "raw_predictions": [
+        {
+          "class": "rice",
+          "category": "staple",
+          "confidence": 0.918,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "khichdi",
+          "category": "dish",
+          "confidence": 0.053,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "fried_rice",
+          "category": "dish",
+          "confidence": 0.016,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "plain_rice_02.jpg",
+      "category": "staples",
+      "expected_class": "rice",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "rice",
+      "pred_category": "staple",
+      "confidence": 0.91,
+      "visual_description": "Steamed white plain basmati rice grains",
+      "is_correct": true,
+      "latency_ms": 437.4,
+      "raw_predictions": [
+        {
+          "class": "rice",
+          "category": "staple",
+          "confidence": 0.91,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "cauliflower",
+          "category": "vegetable",
+          "confidence": 0.03,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "unknown_food",
+          "category": "dish",
+          "confidence": 0.027,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "plain_rice_03.jpg",
+      "category": "staples",
+      "expected_class": "rice",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "rice",
+      "pred_category": "staple",
+      "confidence": 0.871,
+      "visual_description": "Steamed white plain basmati rice grains",
+      "is_correct": true,
+      "latency_ms": 409.8,
+      "raw_predictions": [
+        {
+          "class": "rice",
+          "category": "staple",
+          "confidence": 0.871,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "rajma_chawal",
+          "category": "dish",
+          "confidence": 0.1,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "fried_rice",
+          "category": "dish",
+          "confidence": 0.017,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "fried_rice_01.jpg",
+      "category": "staples",
+      "expected_class": "fried_rice",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "fried_rice",
+      "pred_category": "dish",
+      "confidence": 0.994,
+      "visual_description": "Seasoned fried rice / pulao with visible grains and vegetables",
+      "is_correct": true,
+      "latency_ms": 424.7,
+      "raw_predictions": [
+        {
+          "class": "fried_rice",
+          "category": "dish",
+          "confidence": 0.994,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "biryani",
+          "category": "dish",
+          "confidence": 0.005,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "unknown_food",
+          "category": "dish",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "roti_01.jpg",
+      "category": "staples",
+      "expected_class": "roti",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "roti",
+      "pred_category": "staple",
+      "confidence": 0.99,
+      "visual_description": "Whole-wheat unleavened Indian roti / chapati flatbread",
+      "is_correct": true,
+      "latency_ms": 432.3,
+      "raw_predictions": [
+        {
+          "class": "roti",
+          "category": "staple",
+          "confidence": 0.99,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "naan",
+          "category": "staple",
+          "confidence": 0.006,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "thali_mixed",
+          "category": "dish",
+          "confidence": 0.003,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "paratha_01.jpg",
+      "category": "staples",
+      "expected_class": "paratha",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "paratha",
+      "pred_category": "staple",
+      "confidence": 0.964,
+      "visual_description": "Golden shallow-fried layered Indian paratha flatbread",
+      "is_correct": true,
+      "latency_ms": 507.6,
+      "raw_predictions": [
+        {
+          "class": "paratha",
+          "category": "staple",
+          "confidence": 0.964,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "roti",
+          "category": "staple",
+          "confidence": 0.029,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "naan",
+          "category": "staple",
+          "confidence": 0.005,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "naan_01.jpg",
+      "category": "staples",
+      "expected_class": "naan",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "naan",
+      "pred_category": "staple",
+      "confidence": 0.997,
+      "visual_description": "Tandoori baked naan flatbread with blistered crust",
+      "is_correct": true,
+      "latency_ms": 442.3,
+      "raw_predictions": [
+        {
+          "class": "naan",
+          "category": "staple",
+          "confidence": 0.997,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "cauliflower",
+          "category": "vegetable",
+          "confidence": 0.003,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "paratha",
+          "category": "staple",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "dal_01.jpg",
+      "category": "lentils",
+      "expected_class": "dal",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "dal",
+      "pred_category": "dish",
+      "confidence": 0.915,
+      "visual_description": "Tempered yellow lentil dal soup with spices",
+      "is_correct": true,
+      "latency_ms": 452.3,
+      "raw_predictions": [
+        {
+          "class": "dal",
+          "category": "dish",
+          "confidence": 0.915,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "khichdi",
+          "category": "dish",
+          "confidence": 0.083,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "aloo_gobi",
+          "category": "dish",
+          "confidence": 0.001,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "dal_02.jpg",
+      "category": "lentils",
+      "expected_class": "sambar",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "sambar",
+      "pred_category": "dish",
+      "confidence": 0.8,
+      "visual_description": "South Indian tangy vegetable and lentil sambar stew",
+      "is_correct": true,
+      "latency_ms": 430.8,
+      "raw_predictions": [
+        {
+          "class": "sambar",
+          "category": "dish",
+          "confidence": 0.8,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "dal",
+          "category": "dish",
+          "confidence": 0.196,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "khichdi",
+          "category": "dish",
+          "confidence": 0.003,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "rajma_01.jpg",
+      "category": "lentils",
+      "expected_class": "rajma",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "rajma",
+      "pred_category": "dish",
+      "confidence": 0.935,
+      "visual_description": "Red kidney bean (rajma) curry in thick spiced tomato-onion gravy",
+      "is_correct": true,
+      "latency_ms": 513.6,
+      "raw_predictions": [
+        {
+          "class": "rajma",
+          "category": "dish",
+          "confidence": 0.935,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "rajma_chawal",
+          "category": "dish",
+          "confidence": 0.05,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "dal_makhani",
+          "category": "dish",
+          "confidence": 0.011,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "chole_01.jpg",
+      "category": "lentils",
+      "expected_class": "chole",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "chole",
+      "pred_category": "dish",
+      "confidence": 0.948,
+      "visual_description": "Spiced chickpea (chole / chana masala) curry",
+      "is_correct": true,
+      "latency_ms": 432.6,
+      "raw_predictions": [
+        {
+          "class": "chole",
+          "category": "dish",
+          "confidence": 0.948,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "chole_bhature",
+          "category": "dish",
+          "confidence": 0.051,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "aloo_gobi",
+          "category": "dish",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "biryani_01.jpg",
+      "category": "indian_dishes",
+      "expected_class": "biryani",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "biryani",
+      "pred_category": "dish",
+      "confidence": 0.848,
+      "visual_description": "Fragrant seasoned basmati rice biryani cooked with rich spices and aromatics",
+      "is_correct": true,
+      "latency_ms": 419.5,
+      "raw_predictions": [
+        {
+          "class": "biryani",
+          "category": "dish",
+          "confidence": 0.848,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "fried_rice",
+          "category": "dish",
+          "confidence": 0.136,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "cauliflower",
+          "category": "vegetable",
+          "confidence": 0.007,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "biryani_02.jpg",
+      "category": "indian_dishes",
+      "expected_class": "biryani",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "biryani",
+      "pred_category": "dish",
+      "confidence": 0.998,
+      "visual_description": "Fragrant seasoned basmati rice biryani cooked with rich spices and aromatics",
+      "is_correct": true,
+      "latency_ms": 422.2,
+      "raw_predictions": [
+        {
+          "class": "biryani",
+          "category": "dish",
+          "confidence": 0.998,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "cauliflower",
+          "category": "vegetable",
+          "confidence": 0.001,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "fried_rice",
+          "category": "dish",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "paneer_01.jpg",
+      "category": "indian_dishes",
+      "expected_class": "paneer",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "paneer",
+      "pred_category": "dish",
+      "confidence": 0.995,
+      "visual_description": "Cubed paneer cottage cheese in rich creamy tomato-butter gravy",
+      "is_correct": true,
+      "latency_ms": 436.2,
+      "raw_predictions": [
+        {
+          "class": "paneer",
+          "category": "dish",
+          "confidence": 0.995,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "palak_paneer",
+          "category": "dish",
+          "confidence": 0.001,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "dal_makhani",
+          "category": "dish",
+          "confidence": 0.001,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "samosa_01.jpg",
+      "category": "indian_dishes",
+      "expected_class": "samosa",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "samosa",
+      "pred_category": "dish",
+      "confidence": 1.0,
+      "visual_description": "Golden fried triangular pastry filled with spiced potato and pea stuffing",
+      "is_correct": true,
+      "latency_ms": 395.8,
+      "raw_predictions": [
+        {
+          "class": "samosa",
+          "category": "dish",
+          "confidence": 1.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "unknown_food",
+          "category": "dish",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "cauliflower",
+          "category": "vegetable",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "dosa_01.jpg",
+      "category": "indian_dishes",
+      "expected_class": "dosa",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "dosa",
+      "pred_category": "dish",
+      "confidence": 0.998,
+      "visual_description": "Golden fermented rice-and-lentil crepe (dosa)",
+      "is_correct": true,
+      "latency_ms": 402.3,
+      "raw_predictions": [
+        {
+          "class": "dosa",
+          "category": "dish",
+          "confidence": 0.998,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "pav_bhaji",
+          "category": "dish",
+          "confidence": 0.001,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "thali_mixed",
+          "category": "dish",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "idli_01.jpg",
+      "category": "indian_dishes",
+      "expected_class": "idli",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "idli",
+      "pred_category": "dish",
+      "confidence": 0.997,
+      "visual_description": "Soft steamed savory fermented white rice cakes (idli)",
+      "is_correct": true,
+      "latency_ms": 405.9,
+      "raw_predictions": [
+        {
+          "class": "idli",
+          "category": "dish",
+          "confidence": 0.997,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "upma",
+          "category": "dish",
+          "confidence": 0.003,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "vada",
+          "category": "dish",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "rajma_chawal_01.jpg",
+      "category": "indian_dishes",
+      "expected_class": "rajma_chawal",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "rajma_chawal",
+      "pred_category": "dish",
+      "confidence": 0.382,
+      "visual_description": "Rajma Chawal combination plate of steamed rice with red kidney bean curry",
+      "is_correct": true,
+      "latency_ms": 420.2,
+      "raw_predictions": [
+        {
+          "class": "rajma_chawal",
+          "category": "dish",
+          "confidence": 0.382,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "aloo_gobi",
+          "category": "dish",
+          "confidence": 0.32,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "thali_mixed",
+          "category": "dish",
+          "confidence": 0.145,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "rice_dal_combo_01.jpg",
+      "category": "indian_dishes",
+      "expected_class": "rice_dal_combo",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "rice_dal_combo",
+      "pred_category": "dish",
+      "confidence": 0.931,
+      "visual_description": "Rice and Dal combination plate with yellow lentil curry over white rice",
+      "is_correct": true,
+      "latency_ms": 429.4,
+      "raw_predictions": [
+        {
+          "class": "rice_dal_combo",
+          "category": "dish",
+          "confidence": 0.931,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "rajma_chawal",
+          "category": "dish",
+          "confidence": 0.066,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "dal_makhani",
+          "category": "dish",
+          "confidence": 0.003,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "thali_mixed_01.jpg",
+      "category": "indian_dishes",
+      "expected_class": "thali_mixed",
+      "expected_type": "cooked_food",
+      "pred_status": "recognized",
+      "pred_name": "thali_mixed",
+      "pred_category": "dish",
+      "confidence": 0.999,
+      "visual_description": "Traditional Indian thali platter with multiple regional dishes, curries, dal, roti and rice",
+      "is_correct": true,
+      "latency_ms": 410.7,
+      "raw_predictions": [
+        {
+          "class": "thali_mixed",
+          "category": "dish",
+          "confidence": 0.999,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "aloo_gobi",
+          "category": "dish",
+          "confidence": 0.001,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "unknown_food",
+          "category": "dish",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "pizza_01.jpg",
+      "category": "western_foods",
+      "expected_class": "pizza",
+      "expected_type": "food",
+      "pred_status": "recognized",
+      "pred_name": "pizza",
+      "pred_category": "dish",
+      "confidence": 0.998,
+      "visual_description": "Baked crust pizza with melted cheese and savory toppings",
+      "is_correct": true,
+      "latency_ms": 409.6,
+      "raw_predictions": [
+        {
+          "class": "pizza",
+          "category": "dish",
+          "confidence": 0.998,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "sandwich",
+          "category": "bakery",
+          "confidence": 0.001,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "naan",
+          "category": "staple",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "burger_01.jpg",
+      "category": "western_foods",
+      "expected_class": "burger",
+      "expected_type": "food",
+      "pred_status": "recognized",
+      "pred_name": "burger",
+      "pred_category": "dish",
+      "confidence": 0.99,
+      "visual_description": "Burger patty in sandwich bun with fresh toppings and condiments",
+      "is_correct": true,
+      "latency_ms": 415.0,
+      "raw_predictions": [
+        {
+          "class": "burger",
+          "category": "dish",
+          "confidence": 0.99,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "sandwich",
+          "category": "bakery",
+          "confidence": 0.01,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "dal_makhani",
+          "category": "dish",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "pasta_01.jpg",
+      "category": "western_foods",
+      "expected_class": "pasta",
+      "expected_type": "food",
+      "pred_status": "recognized",
+      "pred_name": "pasta",
+      "pred_category": "dish",
+      "confidence": 0.928,
+      "visual_description": "Cooked pasta noodles with seasoned sauce",
+      "is_correct": true,
+      "latency_ms": 399.5,
+      "raw_predictions": [
+        {
+          "class": "pasta",
+          "category": "dish",
+          "confidence": 0.928,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "soup",
+          "category": "dish",
+          "confidence": 0.066,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "unknown_food",
+          "category": "dish",
+          "confidence": 0.003,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "sandwich_01.jpg",
+      "category": "western_foods",
+      "expected_class": "sandwich",
+      "expected_type": "food",
+      "pred_status": "recognized",
+      "pred_name": "sandwich",
+      "pred_category": "bakery",
+      "confidence": 0.998,
+      "visual_description": "Layered sandwich with toasted sliced bread and fillings",
+      "is_correct": true,
+      "latency_ms": 419.8,
+      "raw_predictions": [
+        {
+          "class": "sandwich",
+          "category": "bakery",
+          "confidence": 0.998,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "pav_bhaji",
+          "category": "dish",
+          "confidence": 0.001,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "paneer",
+          "category": "dish",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "apple_01.jpg",
+      "category": "fruits",
+      "expected_class": "apple",
+      "expected_type": "fruit",
+      "pred_status": "recognized",
+      "pred_name": "apple",
+      "pred_category": "fruit",
+      "confidence": 0.997,
+      "visual_description": "Fresh whole apple with crisp skin",
+      "is_correct": true,
+      "latency_ms": 407.5,
+      "raw_predictions": [
+        {
+          "class": "apple",
+          "category": "fruit",
+          "confidence": 0.997,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "tomato",
+          "category": "vegetable",
+          "confidence": 0.001,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "pomegranate",
+          "category": "fruit",
+          "confidence": 0.001,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "banana_01.jpg",
+      "category": "fruits",
+      "expected_class": "banana",
+      "expected_type": "fruit",
+      "pred_status": "recognized",
+      "pred_name": "banana",
+      "pred_category": "fruit",
+      "confidence": 1.0,
+      "visual_description": "Ripe banana with yellow peel",
+      "is_correct": true,
+      "latency_ms": 421.4,
+      "raw_predictions": [
+        {
+          "class": "banana",
+          "category": "fruit",
+          "confidence": 1.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "lemon",
+          "category": "fruit",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "mango",
+          "category": "fruit",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "mango_01.jpg",
+      "category": "fruits",
+      "expected_class": "mango",
+      "expected_type": "fruit",
+      "pred_status": "recognized",
+      "pred_name": "mango",
+      "pred_category": "fruit",
+      "confidence": 1.0,
+      "visual_description": "Sweet ripe mango with smooth skin",
+      "is_correct": true,
+      "latency_ms": 391.4,
+      "raw_predictions": [
+        {
+          "class": "mango",
+          "category": "fruit",
+          "confidence": 1.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "papaya",
+          "category": "fruit",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "lemon",
+          "category": "fruit",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "orange_01.jpg",
+      "category": "fruits",
+      "expected_class": "orange",
+      "expected_type": "fruit",
+      "pred_status": "recognized",
+      "pred_name": "orange",
+      "pred_category": "fruit",
+      "confidence": 0.938,
+      "visual_description": "Citrus orange fruit with textured rind",
+      "is_correct": true,
+      "latency_ms": 485.8,
+      "raw_predictions": [
+        {
+          "class": "orange",
+          "category": "fruit",
+          "confidence": 0.938,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "lemon",
+          "category": "fruit",
+          "confidence": 0.034,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "papaya",
+          "category": "fruit",
+          "confidence": 0.011,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "dimsum_01.jpg",
+      "category": "unknown_dish",
+      "expected_class": "unknown_food",
+      "expected_type": "food",
+      "pred_status": "uncertain",
+      "pred_name": null,
+      "pred_category": "dish",
+      "confidence": 1.0,
+      "visual_description": "The exact dish could not be identified with certainty. Visually observed: Food preparation with mixed culinary ingredients.",
+      "is_correct": true,
+      "latency_ms": 433.2,
+      "raw_predictions": [
+        {
+          "class": "unknown_food",
+          "category": "dish",
+          "confidence": 1.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "cauliflower",
+          "category": "vegetable",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "sandwich",
+          "category": "bakery",
+          "confidence": 0.0,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "paella_01.jpg",
+      "category": "unknown_dish",
+      "expected_class": "unknown_food",
+      "expected_type": "food",
+      "pred_status": "uncertain",
+      "pred_name": null,
+      "pred_category": "dish",
+      "confidence": 0.72,
+      "visual_description": "The exact dish could not be identified with certainty. Visually observed: Sauce/gravy: yellow tempered lentil dal gravy. Observed elements: steamed or stir-fried mixed vegetables and potatoes.",
+      "is_correct": true,
+      "latency_ms": 409.9,
+      "raw_predictions": [
+        {
+          "class": "unknown_food",
+          "category": "dish",
+          "confidence": 0.72,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "sambar",
+          "category": "dish",
+          "confidence": 0.223,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "poha",
+          "category": "dish",
+          "confidence": 0.024,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "rambutan_01.jpg",
+      "category": "unknown_dish",
+      "expected_class": "unknown_food",
+      "expected_type": "food",
+      "pred_status": "uncertain",
+      "pred_name": null,
+      "pred_category": "fruit",
+      "confidence": 0.271,
+      "visual_description": "The exact dish could not be identified with certainty. Visually observed: Observed elements: whole red kidney beans or chickpeas.",
+      "is_correct": true,
+      "latency_ms": 397.9,
+      "raw_predictions": [
+        {
+          "class": "pomegranate",
+          "category": "fruit",
+          "confidence": 0.271,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "apple",
+          "category": "fruit",
+          "confidence": 0.252,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        },
+        {
+          "class": "pineapple",
+          "category": "fruit",
+          "confidence": 0.152,
+          "condition": "fresh/ripe",
+          "freshness_status": "FRESH"
+        }
+      ]
+    },
+    {
+      "filename": "phone_01.jpg",
+      "category": "non_food",
+      "expected_class": "non_food",
+      "expected_type": "non_food",
+      "pred_status": "not_food",
+      "pred_name": null,
+      "pred_category": null,
+      "confidence": 1.0,
+      "visual_description": "Not a fruit or food. Object visually detected as: an electronic device, computer, laptop, smartphone, circuit board, charger, cable, mouse, headphones, or screen.",
+      "is_correct": true,
+      "latency_ms": 397.5,
+      "raw_predictions": []
+    },
+    {
+      "filename": "laptop_01.jpg",
+      "category": "non_food",
+      "expected_class": "non_food",
+      "expected_type": "non_food",
+      "pred_status": "not_food",
+      "pred_name": null,
+      "pred_category": null,
+      "confidence": 1.0,
+      "visual_description": "Not a fruit or food. Object visually detected as: indoor furniture, chair, desk, table, couch, room interior, or building architecture.",
+      "is_correct": true,
+      "latency_ms": 408.0,
+      "raw_predictions": []
+    },
+    {
+      "filename": "keys_01.jpg",
+      "category": "non_food",
+      "expected_class": "non_food",
+      "expected_type": "non_food",
+      "pred_status": "not_food",
+      "pred_name": null,
+      "pred_category": null,
+      "confidence": 1.0,
+      "visual_description": "Not a fruit or food. Object visually detected as: indoor furniture, chair, desk, table, couch, room interior, or building architecture.",
+      "is_correct": true,
+      "latency_ms": 406.9,
+      "raw_predictions": []
+    },
+    {
+      "filename": "watch_01.jpg",
+      "category": "non_food",
+      "expected_class": "non_food",
+      "expected_type": "non_food",
+      "pred_status": "not_food",
+      "pred_name": null,
+      "pred_category": null,
+      "confidence": 0.999,
+      "visual_description": "Not a fruit or food. Object visually detected as: a human person, portrait, face, hand, or human body.",
+      "is_correct": true,
+      "latency_ms": 390.9,
+      "raw_predictions": []
+    },
+    {
+      "filename": "person_face_01.jpg",
+      "category": "non_food",
+      "expected_class": "non_food",
+      "expected_type": "non_food",
+      "pred_status": "not_food",
+      "pred_name": null,
+      "pred_category": null,
+      "confidence": 1.0,
+      "visual_description": "Not a fruit or food. Object visually detected as: a human person, portrait, face, hand, or human body.",
+      "is_correct": true,
+      "latency_ms": 441.9,
+      "raw_predictions": []
+    },
+    {
+      "filename": "book_01.jpg",
+      "category": "non_food",
+      "expected_class": "non_food",
+      "expected_type": "non_food",
+      "pred_status": "not_food",
+      "pred_name": null,
+      "pred_category": null,
+      "confidence": 0.505,
+      "visual_description": "Not a fruit or food. Object visually detected as: fresh raw edible fruit, whole raw vegetable, or farm produce.",
+      "is_correct": true,
+      "latency_ms": 404.6,
+      "raw_predictions": []
+    },
+    {
+      "filename": "water_bottle_01.jpg",
+      "category": "non_food",
+      "expected_class": "non_food",
+      "expected_type": "non_food",
+      "pred_status": "not_food",
+      "pred_name": null,
+      "pred_category": null,
+      "confidence": 0.896,
+      "visual_description": "Not a fruit or food. Object visually detected as: indoor furniture, chair, desk, table, couch, room interior, or building architecture.",
+      "is_correct": true,
+      "latency_ms": 408.2,
+      "raw_predictions": []
+    },
+    {
+      "filename": "mouse_01.jpg",
+      "category": "non_food",
+      "expected_class": "non_food",
+      "expected_type": "non_food",
+      "pred_status": "not_food",
+      "pred_name": null,
+      "pred_category": null,
+      "confidence": 0.999,
+      "visual_description": "Not a fruit or food. Object visually detected as: a car, automobile, sports car, motor vehicle, road, traffic, or outdoor street.",
+      "is_correct": true,
+      "latency_ms": 391.9,
+      "raw_predictions": []
+    },
+    {
+      "filename": "headphones_01.jpg",
+      "category": "non_food",
+      "expected_class": "non_food",
+      "expected_type": "non_food",
+      "pred_status": "not_food",
+      "pred_name": null,
+      "pred_category": null,
+      "confidence": 0.997,
+      "visual_description": "Not a fruit or food. Object visually detected as: an electronic device, computer, laptop, smartphone, circuit board, charger, cable, mouse, headphones, or screen.",
+      "is_correct": true,
+      "latency_ms": 387.8,
+      "raw_predictions": []
+    },
+    {
+      "filename": "charger_01.jpg",
+      "category": "non_food",
+      "expected_class": "non_food",
+      "expected_type": "non_food",
+      "pred_status": "not_food",
+      "pred_name": null,
+      "pred_category": null,
+      "confidence": 1.0,
+      "visual_description": "Not a fruit or food. Object visually detected as: an electronic device, computer, laptop, smartphone, circuit board, charger, cable, mouse, headphones, or screen.",
+      "is_correct": true,
+      "latency_ms": 400.6,
+      "raw_predictions": []
+    },
+    {
+      "filename": "coffee_mug_01.jpg",
+      "category": "non_food",
+      "expected_class": "non_food",
+      "expected_type": "non_food",
+      "pred_status": "not_food",
+      "pred_name": null,
+      "pred_category": null,
+      "confidence": 0.794,
+      "visual_description": "Not a fruit or food. Object visually detected as: a human person, portrait, face, hand, or human body.",
+      "is_correct": true,
+      "latency_ms": 404.4,
+      "raw_predictions": []
+    },
+    {
+      "filename": "pen_01.jpg",
+      "category": "non_food",
+      "expected_class": "non_food",
+      "expected_type": "non_food",
+      "pred_status": "not_food",
+      "pred_name": null,
+      "pred_category": null,
+      "confidence": 0.993,
+      "visual_description": "Not a fruit or food. Object visually detected as: non-food household objects, metal keys, wristwatch, pen, shoe, clothing, paper book, bottle, container, or pet animal.",
+      "is_correct": true,
+      "latency_ms": 450.9,
+      "raw_predictions": []
+    },
+    {
+      "filename": "shoe_01.jpg",
+      "category": "non_food",
+      "expected_class": "non_food",
+      "expected_type": "non_food",
+      "pred_status": "not_food",
+      "pred_name": null,
+      "pred_category": null,
+      "confidence": 0.953,
+      "visual_description": "Not a fruit or food. Object visually detected as: non-food household objects, metal keys, wristwatch, pen, shoe, clothing, paper book, bottle, container, or pet animal.",
+      "is_correct": true,
+      "latency_ms": 396.1,
+      "raw_predictions": []
+    },
+    {
+      "filename": "car_01.jpg",
+      "category": "non_food",
+      "expected_class": "non_food",
+      "expected_type": "non_food",
+      "pred_status": "not_food",
+      "pred_name": null,
+      "pred_category": null,
+      "confidence": 1.0,
+      "visual_description": "Not a fruit or food. Object visually detected as: a car, automobile, sports car, motor vehicle, road, traffic, or outdoor street.",
+      "is_correct": true,
+      "latency_ms": 384.1,
+      "raw_predictions": []
+    },
+    {
+      "filename": "cat_01.jpg",
+      "category": "non_food",
+      "expected_class": "non_food",
+      "expected_type": "non_food",
+      "pred_status": "not_food",
+      "pred_name": null,
+      "pred_category": null,
+      "confidence": 0.986,
+      "visual_description": "Not a fruit or food. Object visually detected as: a human person, portrait, face, hand, or human body.",
+      "is_correct": true,
+      "latency_ms": 393.4,
+      "raw_predictions": []
+    }
+  ]
+}

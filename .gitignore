@@ -1,0 +1,73 @@
+# Environment secrets & local config
+.env
+.env.*
+!.env.example
+
+# Python cache & build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Local databases & run-time generated data
+database/*.db
+database/*.sqlite
+database/*.sqlite3
+*.db
+*.sqlite
+*.sqlite3
+
+# Run-time exports & logs
+exports/*.csv
+exports/*.json
+reports/*.csv
+reports/*.json
+logs/
+*.log
+
+# Large binary model weights
+models/*.pt
+models/*.onnx
+models/*.bin
+weights/
+*.pt
+*.bin
+*.pth
+*.onnx
+*.safetensors
+
+# Legacy projects
+legacy_face_project/
+
+# Local notes & scratchpads
+memory/
+
+# IDE & OS-specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/

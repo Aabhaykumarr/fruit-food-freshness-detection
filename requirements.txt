@@ -1,0 +1,23 @@
+# Core Computer Vision & Deep Learning
+google-genai>=0.1.0
+openai>=1.40.0
+torch>=2.0.0
+transformers>=4.38.0
+opencv-python-headless>=4.8.0
+Pillow>=10.0.0
+
+# Web Application & Interface
+streamlit>=1.30.0
+
+# Data Processing & Utilities
+numpy>=1.24.0
+pandas>=2.0.0
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# Hardware & Serial Communication
+pyserial>=3.5
+
+# Testing & Quality Assurance
+pytest>=8.0.0

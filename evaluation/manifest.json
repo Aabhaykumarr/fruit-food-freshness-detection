@@ -1,0 +1,298 @@
+[
+  {
+    "relative_path": "evaluation/fruits/apple_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\fruits\\apple_01.jpg",
+    "category": "fruits",
+    "expected_class": "apple",
+    "expected_type": "fruit",
+    "description": "Fresh red delicious apple on white background"
+  },
+  {
+    "relative_path": "evaluation/fruits/banana_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\fruits\\banana_01.jpg",
+    "category": "fruits",
+    "expected_class": "banana",
+    "expected_type": "fruit",
+    "description": "Ripe yellow bananas in bunch"
+  },
+  {
+    "relative_path": "evaluation/fruits/orange_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\fruits\\orange_01.jpg",
+    "category": "fruits",
+    "expected_class": "orange",
+    "expected_type": "fruit",
+    "description": "Whole fresh ripe orange with citrus skin"
+  },
+  {
+    "relative_path": "evaluation/fruits/mango_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\fruits\\mango_01.jpg",
+    "category": "fruits",
+    "expected_class": "mango",
+    "expected_type": "fruit",
+    "description": "Ripe yellow mango on plain background"
+  },
+  {
+    "relative_path": "evaluation/fruits/strawberry_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\fruits\\strawberry_01.jpg",
+    "category": "fruits",
+    "expected_class": "strawberry",
+    "expected_type": "fruit",
+    "description": "Fresh whole strawberries"
+  },
+  {
+    "relative_path": "evaluation/fruits/watermelon_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\fruits\\watermelon_01.jpg",
+    "category": "fruits",
+    "expected_class": "watermelon",
+    "expected_type": "fruit",
+    "description": "Fresh sliced watermelon piece"
+  },
+  {
+    "relative_path": "evaluation/fruits/grapes_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\fruits\\grapes_01.jpg",
+    "category": "fruits",
+    "expected_class": "grapes",
+    "expected_type": "fruit",
+    "description": "Bunch of fresh purple grapes"
+  },
+  {
+    "relative_path": "evaluation/fruits/pomegranate_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\fruits\\pomegranate_01.jpg",
+    "category": "fruits",
+    "expected_class": "pomegranate",
+    "expected_type": "fruit",
+    "description": "Fresh whole and cut pomegranate with arils"
+  },
+  {
+    "relative_path": "evaluation/foods/pizza_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\foods\\pizza_01.jpg",
+    "category": "foods",
+    "expected_class": "pizza",
+    "expected_type": "food",
+    "description": "Whole cheese and tomato pizza on wooden board"
+  },
+  {
+    "relative_path": "evaluation/foods/burger_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\foods\\burger_01.jpg",
+    "category": "foods",
+    "expected_class": "burger",
+    "expected_type": "food",
+    "description": "Classic beef/cheese burger with sesame bun"
+  },
+  {
+    "relative_path": "evaluation/foods/pasta_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\foods\\pasta_01.jpg",
+    "category": "foods",
+    "expected_class": "pasta",
+    "expected_type": "food",
+    "description": "Italian pasta with tomato basil sauce"
+  },
+  {
+    "relative_path": "evaluation/foods/sandwich_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\foods\\sandwich_01.jpg",
+    "category": "foods",
+    "expected_class": "sandwich",
+    "expected_type": "food",
+    "description": "Toasted club sandwich cut into halves"
+  },
+  {
+    "relative_path": "evaluation/foods/samosa_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\foods\\samosa_01.jpg",
+    "category": "foods",
+    "expected_class": "samosa",
+    "expected_type": "food",
+    "description": "Crispy golden fried Indian samosas with chutney"
+  },
+  {
+    "relative_path": "evaluation/foods/biryani_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\foods\\biryani_01.jpg",
+    "category": "foods",
+    "expected_class": "biryani",
+    "expected_type": "food",
+    "description": "Spiced chicken biryani rice dish in handi"
+  },
+  {
+    "relative_path": "evaluation/foods/dosa_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\foods\\dosa_01.jpg",
+    "category": "foods",
+    "expected_class": "dosa",
+    "expected_type": "food",
+    "description": "Crispy South Indian masala dosa with chutney and sambar"
+  },
+  {
+    "relative_path": "evaluation/foods/idli_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\foods\\idli_01.jpg",
+    "category": "foods",
+    "expected_class": "idli",
+    "expected_type": "food",
+    "description": "Steamed white idlis with coconut chutney"
+  },
+  {
+    "relative_path": "evaluation/foods/paneer_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\foods\\paneer_01.jpg",
+    "category": "foods",
+    "expected_class": "paneer",
+    "expected_type": "food",
+    "description": "Paneer butter masala / paneer curry in bowl"
+  },
+  {
+    "relative_path": "evaluation/foods/roti_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\foods\\roti_01.jpg",
+    "category": "foods",
+    "expected_class": "roti",
+    "expected_type": "food",
+    "description": "Indian flatbread chapati / roti stack"
+  },
+  {
+    "relative_path": "evaluation/non_food/phone_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\non_food\\phone_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "description": "Modern smartphone on dark surface"
+  },
+  {
+    "relative_path": "evaluation/non_food/laptop_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\non_food\\laptop_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "description": "Laptop computer open on wooden desk"
+  },
+  {
+    "relative_path": "evaluation/non_food/circuit_arduino_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\non_food\\circuit_arduino_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "description": "Electronic circuit board / microcontroller"
+  },
+  {
+    "relative_path": "evaluation/non_food/person_face_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\non_food\\person_face_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "description": "Human face portrait portrait photo"
+  },
+  {
+    "relative_path": "evaluation/non_food/chair_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\non_food\\chair_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "description": "Wooden chair in minimalist room"
+  },
+  {
+    "relative_path": "evaluation/non_food/book_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\non_food\\book_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "description": "Hardcover open book on table"
+  },
+  {
+    "relative_path": "evaluation/non_food/bottle_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\non_food\\bottle_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "description": "Reusable stainless steel water bottle"
+  },
+  {
+    "relative_path": "evaluation/non_food/watch_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\non_food\\watch_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "description": "Analog wristwatch on white background"
+  },
+  {
+    "relative_path": "evaluation/non_food/car_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\non_food\\car_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "description": "Sports car vehicle on road"
+  },
+  {
+    "relative_path": "evaluation/non_food/cat_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\non_food\\cat_01.jpg",
+    "category": "non_food",
+    "expected_class": "non_food",
+    "expected_type": "non_food",
+    "description": "Domestic cat portrait looking at camera"
+  },
+  {
+    "relative_path": "evaluation/difficult/dal_tadka_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\difficult\\dal_tadka_01.jpg",
+    "category": "difficult",
+    "expected_class": "dal",
+    "expected_type": "food",
+    "description": "Yellow dal tadka / lentil curry in steel bowl with garnish"
+  },
+  {
+    "relative_path": "evaluation/difficult/mixed_curry_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\difficult\\mixed_curry_01.jpg",
+    "category": "difficult",
+    "expected_class": "curry",
+    "expected_type": "food",
+    "description": "Rich dark Indian curry dish in kadai"
+  },
+  {
+    "relative_path": "evaluation/difficult/apple_shadow_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\difficult\\apple_shadow_01.jpg",
+    "category": "difficult",
+    "expected_class": "apple",
+    "expected_type": "fruit",
+    "description": "Apple in dramatic shadow and moody ambient lighting"
+  },
+  {
+    "relative_path": "evaluation/difficult/banana_partial_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\difficult\\banana_partial_01.jpg",
+    "category": "difficult",
+    "expected_class": "banana",
+    "expected_type": "fruit",
+    "description": "Peeled and sliced banana on dark background"
+  },
+  {
+    "relative_path": "evaluation/difficult/indian_thali_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\difficult\\indian_thali_01.jpg",
+    "category": "difficult",
+    "expected_class": "thali_mixed",
+    "expected_type": "food",
+    "description": "Complete Indian thali with multiple small bowls of curry, rice, and roti"
+  },
+  {
+    "relative_path": "evaluation/unknown/rambutan_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\unknown\\rambutan_01.jpg",
+    "category": "unknown",
+    "expected_class": "unknown_food",
+    "expected_type": "food",
+    "description": "Exotic tropical hairy rambutan fruit"
+  },
+  {
+    "relative_path": "evaluation/unknown/durian_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\unknown\\durian_01.jpg",
+    "category": "unknown",
+    "expected_class": "unknown_food",
+    "expected_type": "food",
+    "description": "Exotic spiky durian fruit cut open"
+  },
+  {
+    "relative_path": "evaluation/unknown/paella_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\unknown\\paella_01.jpg",
+    "category": "unknown",
+    "expected_class": "unknown_food",
+    "expected_type": "food",
+    "description": "Spanish seafood paella rice dish"
+  },
+  {
+    "relative_path": "evaluation/unknown/dimsum_01.jpg",
+    "absolute_path": "C:\\Users\\aabha\\OneDrive\\Desktop\\fruit_detection\\evaluation\\unknown\\dimsum_01.jpg",
+    "category": "unknown",
+    "expected_class": "unknown_food",
+    "expected_type": "food",
+    "description": "Chinese steamed dim sum dumplings in bamboo steamer"
+  }
+]

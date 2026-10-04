@@ -1,0 +1,1398 @@
+[
+  {
+    "model_name": "YOLO-World v2 Small (Current Baseline)",
+    "task": "Open-Vocabulary Object Detection",
+    "classes": 113,
+    "model_size_mb": 24.7,
+    "total_test_images": 37,
+    "overall_accuracy_pct": 40.5,
+    "food_recognition_acc_pct": 26.1,
+    "non_food_rejection_rate_pct": 90.0,
+    "false_food_rate_pct": 10.0,
+    "false_food_name_rate_pct": 73.9,
+    "unknown_handling_rate_pct": 0.0,
+    "avg_latency_ms": 227.1,
+    "per_image_results": [
+      {
+        "image": "apple_01.jpg",
+        "category": "fruits",
+        "expected": "apple",
+        "predicted": "apple",
+        "status": "recognized",
+        "confidence": 0.699,
+        "is_correct": true
+      },
+      {
+        "image": "banana_01.jpg",
+        "category": "fruits",
+        "expected": "banana",
+        "predicted": "banana",
+        "status": "recognized",
+        "confidence": 0.815,
+        "is_correct": true
+      },
+      {
+        "image": "orange_01.jpg",
+        "category": "fruits",
+        "expected": "orange",
+        "predicted": "orange",
+        "status": "recognized",
+        "confidence": 0.774,
+        "is_correct": true
+      },
+      {
+        "image": "mango_01.jpg",
+        "category": "fruits",
+        "expected": "mango",
+        "predicted": "lime",
+        "status": "recognized",
+        "confidence": 0.481,
+        "is_correct": false
+      },
+      {
+        "image": "strawberry_01.jpg",
+        "category": "fruits",
+        "expected": "strawberry",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": false
+      },
+      {
+        "image": "watermelon_01.jpg",
+        "category": "fruits",
+        "expected": "watermelon",
+        "predicted": "custard apple",
+        "status": "recognized",
+        "confidence": 0.658,
+        "is_correct": false
+      },
+      {
+        "image": "grapes_01.jpg",
+        "category": "fruits",
+        "expected": "grapes",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": false
+      },
+      {
+        "image": "pomegranate_01.jpg",
+        "category": "fruits",
+        "expected": "pomegranate",
+        "predicted": "fruit salad",
+        "status": "recognized",
+        "confidence": 0.552,
+        "is_correct": false
+      },
+      {
+        "image": "pizza_01.jpg",
+        "category": "foods",
+        "expected": "pizza",
+        "predicted": "pizza",
+        "status": "recognized",
+        "confidence": 0.443,
+        "is_correct": true
+      },
+      {
+        "image": "burger_01.jpg",
+        "category": "foods",
+        "expected": "burger",
+        "predicted": "sandwich",
+        "status": "recognized",
+        "confidence": 0.574,
+        "is_correct": false
+      },
+      {
+        "image": "pasta_01.jpg",
+        "category": "foods",
+        "expected": "pasta",
+        "predicted": "pizza",
+        "status": "recognized",
+        "confidence": 0.532,
+        "is_correct": false
+      },
+      {
+        "image": "sandwich_01.jpg",
+        "category": "foods",
+        "expected": "sandwich",
+        "predicted": "bread",
+        "status": "recognized",
+        "confidence": 0.439,
+        "is_correct": false
+      },
+      {
+        "image": "samosa_01.jpg",
+        "category": "foods",
+        "expected": "samosa",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": false
+      },
+      {
+        "image": "biryani_01.jpg",
+        "category": "foods",
+        "expected": "biryani",
+        "predicted": "salad",
+        "status": "recognized",
+        "confidence": 0.41,
+        "is_correct": false
+      },
+      {
+        "image": "dosa_01.jpg",
+        "category": "foods",
+        "expected": "dosa",
+        "predicted": "pizza",
+        "status": "recognized",
+        "confidence": 0.391,
+        "is_correct": false
+      },
+      {
+        "image": "idli_01.jpg",
+        "category": "foods",
+        "expected": "idli",
+        "predicted": "bell pepper",
+        "status": "recognized",
+        "confidence": 0.929,
+        "is_correct": false
+      },
+      {
+        "image": "paneer_01.jpg",
+        "category": "foods",
+        "expected": "paneer",
+        "predicted": "pizza",
+        "status": "recognized",
+        "confidence": 0.652,
+        "is_correct": false
+      },
+      {
+        "image": "roti_01.jpg",
+        "category": "foods",
+        "expected": "roti",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": false
+      },
+      {
+        "image": "phone_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": true
+      },
+      {
+        "image": "laptop_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": true
+      },
+      {
+        "image": "circuit_arduino_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": true
+      },
+      {
+        "image": "person_face_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": true
+      },
+      {
+        "image": "chair_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": true
+      },
+      {
+        "image": "book_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": true
+      },
+      {
+        "image": "bottle_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "bottle gourd",
+        "status": "recognized",
+        "confidence": 0.449,
+        "is_correct": false
+      },
+      {
+        "image": "watch_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": true
+      },
+      {
+        "image": "car_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": true
+      },
+      {
+        "image": "cat_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": true
+      },
+      {
+        "image": "dal_tadka_01.jpg",
+        "category": "difficult",
+        "expected": "dal",
+        "predicted": "fried rice",
+        "status": "recognized",
+        "confidence": 0.523,
+        "is_correct": false
+      },
+      {
+        "image": "mixed_curry_01.jpg",
+        "category": "difficult",
+        "expected": "curry",
+        "predicted": "fried rice",
+        "status": "recognized",
+        "confidence": 0.762,
+        "is_correct": false
+      },
+      {
+        "image": "apple_shadow_01.jpg",
+        "category": "difficult",
+        "expected": "apple",
+        "predicted": "apple",
+        "status": "recognized",
+        "confidence": 0.737,
+        "is_correct": true
+      },
+      {
+        "image": "banana_partial_01.jpg",
+        "category": "difficult",
+        "expected": "banana",
+        "predicted": "banana",
+        "status": "recognized",
+        "confidence": 0.73,
+        "is_correct": true
+      },
+      {
+        "image": "indian_thali_01.jpg",
+        "category": "difficult",
+        "expected": "thali_mixed",
+        "predicted": "salad",
+        "status": "recognized",
+        "confidence": 0.579,
+        "is_correct": false
+      },
+      {
+        "image": "rambutan_01.jpg",
+        "category": "unknown",
+        "expected": "unknown_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": false
+      },
+      {
+        "image": "durian_01.jpg",
+        "category": "unknown",
+        "expected": "unknown_food",
+        "predicted": "orange",
+        "status": "recognized",
+        "confidence": 0.813,
+        "is_correct": false
+      },
+      {
+        "image": "paella_01.jpg",
+        "category": "unknown",
+        "expected": "unknown_food",
+        "predicted": "pizza",
+        "status": "recognized",
+        "confidence": 0.482,
+        "is_correct": false
+      },
+      {
+        "image": "dimsum_01.jpg",
+        "category": "unknown",
+        "expected": "unknown_food",
+        "predicted": "soup",
+        "status": "recognized",
+        "confidence": 0.413,
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "model_name": "Food-101 ViT (Fine-Tuned Classifier)",
+    "task": "101-Class Food Image Classification",
+    "classes": 101,
+    "model_size_mb": 343.0,
+    "total_test_images": 37,
+    "overall_accuracy_pct": 16.2,
+    "food_recognition_acc_pct": 26.1,
+    "non_food_rejection_rate_pct": 0.0,
+    "false_food_rate_pct": 100.0,
+    "false_food_name_rate_pct": 73.9,
+    "unknown_handling_rate_pct": 0.0,
+    "avg_latency_ms": 405.4,
+    "per_image_results": [
+      {
+        "image": "apple_01.jpg",
+        "category": "fruits",
+        "expected": "apple",
+        "predicted": "donuts",
+        "status": "recognized",
+        "confidence": 0.035,
+        "is_correct": false
+      },
+      {
+        "image": "banana_01.jpg",
+        "category": "fruits",
+        "expected": "banana",
+        "predicted": "macarons",
+        "status": "recognized",
+        "confidence": 0.042,
+        "is_correct": false
+      },
+      {
+        "image": "orange_01.jpg",
+        "category": "fruits",
+        "expected": "orange",
+        "predicted": "macarons",
+        "status": "recognized",
+        "confidence": 0.061,
+        "is_correct": false
+      },
+      {
+        "image": "mango_01.jpg",
+        "category": "fruits",
+        "expected": "mango",
+        "predicted": "beignets",
+        "status": "recognized",
+        "confidence": 0.112,
+        "is_correct": false
+      },
+      {
+        "image": "strawberry_01.jpg",
+        "category": "fruits",
+        "expected": "strawberry",
+        "predicted": "macarons",
+        "status": "recognized",
+        "confidence": 0.06,
+        "is_correct": false
+      },
+      {
+        "image": "watermelon_01.jpg",
+        "category": "fruits",
+        "expected": "watermelon",
+        "predicted": "macarons",
+        "status": "recognized",
+        "confidence": 0.049,
+        "is_correct": false
+      },
+      {
+        "image": "grapes_01.jpg",
+        "category": "fruits",
+        "expected": "grapes",
+        "predicted": "dumplings",
+        "status": "recognized",
+        "confidence": 0.041,
+        "is_correct": false
+      },
+      {
+        "image": "pomegranate_01.jpg",
+        "category": "fruits",
+        "expected": "pomegranate",
+        "predicted": "falafel",
+        "status": "recognized",
+        "confidence": 0.218,
+        "is_correct": false
+      },
+      {
+        "image": "pizza_01.jpg",
+        "category": "foods",
+        "expected": "pizza",
+        "predicted": "pizza",
+        "status": "recognized",
+        "confidence": 0.997,
+        "is_correct": true
+      },
+      {
+        "image": "burger_01.jpg",
+        "category": "foods",
+        "expected": "burger",
+        "predicted": "hamburger",
+        "status": "recognized",
+        "confidence": 0.992,
+        "is_correct": true
+      },
+      {
+        "image": "pasta_01.jpg",
+        "category": "foods",
+        "expected": "pasta",
+        "predicted": "spaghetti_carbonara",
+        "status": "recognized",
+        "confidence": 0.993,
+        "is_correct": true
+      },
+      {
+        "image": "sandwich_01.jpg",
+        "category": "foods",
+        "expected": "sandwich",
+        "predicted": "grilled_cheese_sandwich",
+        "status": "recognized",
+        "confidence": 0.981,
+        "is_correct": true
+      },
+      {
+        "image": "samosa_01.jpg",
+        "category": "foods",
+        "expected": "samosa",
+        "predicted": "samosa",
+        "status": "recognized",
+        "confidence": 0.997,
+        "is_correct": true
+      },
+      {
+        "image": "biryani_01.jpg",
+        "category": "foods",
+        "expected": "biryani",
+        "predicted": "fried_rice",
+        "status": "recognized",
+        "confidence": 0.895,
+        "is_correct": false
+      },
+      {
+        "image": "dosa_01.jpg",
+        "category": "foods",
+        "expected": "dosa",
+        "predicted": "sushi",
+        "status": "recognized",
+        "confidence": 0.786,
+        "is_correct": false
+      },
+      {
+        "image": "idli_01.jpg",
+        "category": "foods",
+        "expected": "idli",
+        "predicted": "fried_rice",
+        "status": "recognized",
+        "confidence": 0.077,
+        "is_correct": false
+      },
+      {
+        "image": "paneer_01.jpg",
+        "category": "foods",
+        "expected": "paneer",
+        "predicted": "chicken_curry",
+        "status": "recognized",
+        "confidence": 0.995,
+        "is_correct": false
+      },
+      {
+        "image": "roti_01.jpg",
+        "category": "foods",
+        "expected": "roti",
+        "predicted": "chicken_wings",
+        "status": "recognized",
+        "confidence": 0.995,
+        "is_correct": false
+      },
+      {
+        "image": "phone_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "sushi",
+        "status": "recognized",
+        "confidence": 0.48,
+        "is_correct": false
+      },
+      {
+        "image": "laptop_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "donuts",
+        "status": "recognized",
+        "confidence": 0.054,
+        "is_correct": false
+      },
+      {
+        "image": "circuit_arduino_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "donuts",
+        "status": "recognized",
+        "confidence": 0.032,
+        "is_correct": false
+      },
+      {
+        "image": "person_face_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "macaroni_and_cheese",
+        "status": "recognized",
+        "confidence": 0.043,
+        "is_correct": false
+      },
+      {
+        "image": "chair_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "falafel",
+        "status": "recognized",
+        "confidence": 0.062,
+        "is_correct": false
+      },
+      {
+        "image": "book_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "hamburger",
+        "status": "recognized",
+        "confidence": 0.095,
+        "is_correct": false
+      },
+      {
+        "image": "bottle_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "macarons",
+        "status": "recognized",
+        "confidence": 0.065,
+        "is_correct": false
+      },
+      {
+        "image": "watch_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "cheesecake",
+        "status": "recognized",
+        "confidence": 0.057,
+        "is_correct": false
+      },
+      {
+        "image": "car_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "pho",
+        "status": "recognized",
+        "confidence": 0.113,
+        "is_correct": false
+      },
+      {
+        "image": "cat_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "pork_chop",
+        "status": "recognized",
+        "confidence": 0.025,
+        "is_correct": false
+      },
+      {
+        "image": "dal_tadka_01.jpg",
+        "category": "difficult",
+        "expected": "dal",
+        "predicted": "chicken_curry",
+        "status": "recognized",
+        "confidence": 0.988,
+        "is_correct": false
+      },
+      {
+        "image": "mixed_curry_01.jpg",
+        "category": "difficult",
+        "expected": "curry",
+        "predicted": "chicken_curry",
+        "status": "recognized",
+        "confidence": 0.996,
+        "is_correct": true
+      },
+      {
+        "image": "apple_shadow_01.jpg",
+        "category": "difficult",
+        "expected": "apple",
+        "predicted": "caprese_salad",
+        "status": "recognized",
+        "confidence": 0.231,
+        "is_correct": false
+      },
+      {
+        "image": "banana_partial_01.jpg",
+        "category": "difficult",
+        "expected": "banana",
+        "predicted": "breakfast_burrito",
+        "status": "recognized",
+        "confidence": 0.044,
+        "is_correct": false
+      },
+      {
+        "image": "indian_thali_01.jpg",
+        "category": "difficult",
+        "expected": "thali_mixed",
+        "predicted": "pork_chop",
+        "status": "recognized",
+        "confidence": 0.713,
+        "is_correct": false
+      },
+      {
+        "image": "rambutan_01.jpg",
+        "category": "unknown",
+        "expected": "unknown_food",
+        "predicted": "macarons",
+        "status": "recognized",
+        "confidence": 0.07,
+        "is_correct": false
+      },
+      {
+        "image": "durian_01.jpg",
+        "category": "unknown",
+        "expected": "unknown_food",
+        "predicted": "pho",
+        "status": "recognized",
+        "confidence": 0.078,
+        "is_correct": false
+      },
+      {
+        "image": "paella_01.jpg",
+        "category": "unknown",
+        "expected": "unknown_food",
+        "predicted": "paella",
+        "status": "recognized",
+        "confidence": 0.997,
+        "is_correct": false
+      },
+      {
+        "image": "dimsum_01.jpg",
+        "category": "unknown",
+        "expected": "unknown_food",
+        "predicted": "dumplings",
+        "status": "recognized",
+        "confidence": 0.941,
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "model_name": "Google SigLIP Base (Zero-Shot with Negative Prompts)",
+    "task": "Zero-Shot Food/Fruit Classification + Gating",
+    "classes": 29,
+    "model_size_mb": 400.0,
+    "total_test_images": 37,
+    "overall_accuracy_pct": 78.4,
+    "food_recognition_acc_pct": 82.6,
+    "non_food_rejection_rate_pct": 100.0,
+    "false_food_rate_pct": 0.0,
+    "false_food_name_rate_pct": 17.4,
+    "unknown_handling_rate_pct": 0.0,
+    "avg_latency_ms": 3489.2,
+    "per_image_results": [
+      {
+        "image": "apple_01.jpg",
+        "category": "fruits",
+        "expected": "apple",
+        "predicted": "apple",
+        "status": "recognized",
+        "confidence": 0.162,
+        "is_correct": true
+      },
+      {
+        "image": "banana_01.jpg",
+        "category": "fruits",
+        "expected": "banana",
+        "predicted": "banana",
+        "status": "recognized",
+        "confidence": 0.318,
+        "is_correct": true
+      },
+      {
+        "image": "orange_01.jpg",
+        "category": "fruits",
+        "expected": "orange",
+        "predicted": "orange",
+        "status": "recognized",
+        "confidence": 0.056,
+        "is_correct": true
+      },
+      {
+        "image": "mango_01.jpg",
+        "category": "fruits",
+        "expected": "mango",
+        "predicted": "mango",
+        "status": "recognized",
+        "confidence": 0.609,
+        "is_correct": true
+      },
+      {
+        "image": "strawberry_01.jpg",
+        "category": "fruits",
+        "expected": "strawberry",
+        "predicted": "strawberry",
+        "status": "recognized",
+        "confidence": 0.272,
+        "is_correct": true
+      },
+      {
+        "image": "watermelon_01.jpg",
+        "category": "fruits",
+        "expected": "watermelon",
+        "predicted": "watermelon",
+        "status": "recognized",
+        "confidence": 0.511,
+        "is_correct": true
+      },
+      {
+        "image": "grapes_01.jpg",
+        "category": "fruits",
+        "expected": "grapes",
+        "predicted": "grapes",
+        "status": "recognized",
+        "confidence": 0.372,
+        "is_correct": true
+      },
+      {
+        "image": "pomegranate_01.jpg",
+        "category": "fruits",
+        "expected": "pomegranate",
+        "predicted": "grapes",
+        "status": "recognized",
+        "confidence": 0.0,
+        "is_correct": false
+      },
+      {
+        "image": "pizza_01.jpg",
+        "category": "foods",
+        "expected": "pizza",
+        "predicted": "pizza",
+        "status": "recognized",
+        "confidence": 0.203,
+        "is_correct": true
+      },
+      {
+        "image": "burger_01.jpg",
+        "category": "foods",
+        "expected": "burger",
+        "predicted": "burger",
+        "status": "recognized",
+        "confidence": 0.059,
+        "is_correct": true
+      },
+      {
+        "image": "pasta_01.jpg",
+        "category": "foods",
+        "expected": "pasta",
+        "predicted": "pasta",
+        "status": "recognized",
+        "confidence": 0.109,
+        "is_correct": true
+      },
+      {
+        "image": "sandwich_01.jpg",
+        "category": "foods",
+        "expected": "sandwich",
+        "predicted": "sandwich",
+        "status": "recognized",
+        "confidence": 0.306,
+        "is_correct": true
+      },
+      {
+        "image": "samosa_01.jpg",
+        "category": "foods",
+        "expected": "samosa",
+        "predicted": "samosa",
+        "status": "recognized",
+        "confidence": 0.721,
+        "is_correct": true
+      },
+      {
+        "image": "biryani_01.jpg",
+        "category": "foods",
+        "expected": "biryani",
+        "predicted": "biryani",
+        "status": "recognized",
+        "confidence": 0.702,
+        "is_correct": true
+      },
+      {
+        "image": "dosa_01.jpg",
+        "category": "foods",
+        "expected": "dosa",
+        "predicted": "dosa",
+        "status": "recognized",
+        "confidence": 0.868,
+        "is_correct": true
+      },
+      {
+        "image": "idli_01.jpg",
+        "category": "foods",
+        "expected": "idli",
+        "predicted": "idli",
+        "status": "recognized",
+        "confidence": 0.846,
+        "is_correct": true
+      },
+      {
+        "image": "paneer_01.jpg",
+        "category": "foods",
+        "expected": "paneer",
+        "predicted": "paneer",
+        "status": "recognized",
+        "confidence": 0.637,
+        "is_correct": true
+      },
+      {
+        "image": "roti_01.jpg",
+        "category": "foods",
+        "expected": "roti",
+        "predicted": "biryani",
+        "status": "recognized",
+        "confidence": 0.001,
+        "is_correct": false
+      },
+      {
+        "image": "phone_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.324,
+        "is_correct": true
+      },
+      {
+        "image": "laptop_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.031,
+        "is_correct": true
+      },
+      {
+        "image": "circuit_arduino_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.005,
+        "is_correct": true
+      },
+      {
+        "image": "person_face_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.198,
+        "is_correct": true
+      },
+      {
+        "image": "chair_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.016,
+        "is_correct": true
+      },
+      {
+        "image": "book_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.046,
+        "is_correct": true
+      },
+      {
+        "image": "bottle_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.004,
+        "is_correct": true
+      },
+      {
+        "image": "watch_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": true
+      },
+      {
+        "image": "car_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": true
+      },
+      {
+        "image": "cat_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.014,
+        "is_correct": true
+      },
+      {
+        "image": "dal_tadka_01.jpg",
+        "category": "difficult",
+        "expected": "dal",
+        "predicted": "indian",
+        "status": "recognized",
+        "confidence": 0.451,
+        "is_correct": false
+      },
+      {
+        "image": "mixed_curry_01.jpg",
+        "category": "difficult",
+        "expected": "curry",
+        "predicted": "curry",
+        "status": "recognized",
+        "confidence": 0.604,
+        "is_correct": true
+      },
+      {
+        "image": "apple_shadow_01.jpg",
+        "category": "difficult",
+        "expected": "apple",
+        "predicted": "apple",
+        "status": "recognized",
+        "confidence": 0.278,
+        "is_correct": true
+      },
+      {
+        "image": "banana_partial_01.jpg",
+        "category": "difficult",
+        "expected": "banana",
+        "predicted": "banana",
+        "status": "recognized",
+        "confidence": 0.388,
+        "is_correct": true
+      },
+      {
+        "image": "indian_thali_01.jpg",
+        "category": "difficult",
+        "expected": "thali_mixed",
+        "predicted": "curry",
+        "status": "recognized",
+        "confidence": 0.0,
+        "is_correct": false
+      },
+      {
+        "image": "rambutan_01.jpg",
+        "category": "unknown",
+        "expected": "unknown_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": false
+      },
+      {
+        "image": "durian_01.jpg",
+        "category": "unknown",
+        "expected": "unknown_food",
+        "predicted": "orange",
+        "status": "recognized",
+        "confidence": 0.009,
+        "is_correct": false
+      },
+      {
+        "image": "paella_01.jpg",
+        "category": "unknown",
+        "expected": "unknown_food",
+        "predicted": "curry",
+        "status": "recognized",
+        "confidence": 0.0,
+        "is_correct": false
+      },
+      {
+        "image": "dimsum_01.jpg",
+        "category": "unknown",
+        "expected": "unknown_food",
+        "predicted": "dumplings",
+        "status": "recognized",
+        "confidence": 0.41,
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "model_name": "Hierarchical Gated Vision Pipeline (Proposed)",
+    "task": "Multi-Stage Gate -> Specialist -> Calibrated Uncertainty",
+    "classes": 21,
+    "model_size_mb": 400.0,
+    "total_test_images": 37,
+    "overall_accuracy_pct": 51.4,
+    "food_recognition_acc_pct": 26.1,
+    "non_food_rejection_rate_pct": 100.0,
+    "false_food_rate_pct": 0.0,
+    "false_food_name_rate_pct": 73.9,
+    "unknown_handling_rate_pct": 75.0,
+    "avg_latency_ms": 3101.0,
+    "per_image_results": [
+      {
+        "image": "apple_01.jpg",
+        "category": "fruits",
+        "expected": "apple",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.141,
+        "is_correct": false
+      },
+      {
+        "image": "banana_01.jpg",
+        "category": "fruits",
+        "expected": "banana",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.091,
+        "is_correct": false
+      },
+      {
+        "image": "orange_01.jpg",
+        "category": "fruits",
+        "expected": "orange",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.115,
+        "is_correct": false
+      },
+      {
+        "image": "mango_01.jpg",
+        "category": "fruits",
+        "expected": "mango",
+        "predicted": "mango",
+        "status": "recognized",
+        "confidence": 0.472,
+        "is_correct": true
+      },
+      {
+        "image": "strawberry_01.jpg",
+        "category": "fruits",
+        "expected": "strawberry",
+        "predicted": "strawberry",
+        "status": "recognized",
+        "confidence": 0.435,
+        "is_correct": true
+      },
+      {
+        "image": "watermelon_01.jpg",
+        "category": "fruits",
+        "expected": "watermelon",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.121,
+        "is_correct": false
+      },
+      {
+        "image": "grapes_01.jpg",
+        "category": "fruits",
+        "expected": "grapes",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.258,
+        "is_correct": false
+      },
+      {
+        "image": "pomegranate_01.jpg",
+        "category": "fruits",
+        "expected": "pomegranate",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.0,
+        "is_correct": false
+      },
+      {
+        "image": "pizza_01.jpg",
+        "category": "foods",
+        "expected": "pizza",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.262,
+        "is_correct": false
+      },
+      {
+        "image": "burger_01.jpg",
+        "category": "foods",
+        "expected": "burger",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.032,
+        "is_correct": false
+      },
+      {
+        "image": "pasta_01.jpg",
+        "category": "foods",
+        "expected": "pasta",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.057,
+        "is_correct": false
+      },
+      {
+        "image": "sandwich_01.jpg",
+        "category": "foods",
+        "expected": "sandwich",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.064,
+        "is_correct": false
+      },
+      {
+        "image": "samosa_01.jpg",
+        "category": "foods",
+        "expected": "samosa",
+        "predicted": "samosa",
+        "status": "recognized",
+        "confidence": 0.598,
+        "is_correct": true
+      },
+      {
+        "image": "biryani_01.jpg",
+        "category": "foods",
+        "expected": "biryani",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.108,
+        "is_correct": false
+      },
+      {
+        "image": "dosa_01.jpg",
+        "category": "foods",
+        "expected": "dosa",
+        "predicted": "dosa",
+        "status": "recognized",
+        "confidence": 0.767,
+        "is_correct": true
+      },
+      {
+        "image": "idli_01.jpg",
+        "category": "foods",
+        "expected": "idli",
+        "predicted": "idli",
+        "status": "recognized",
+        "confidence": 0.844,
+        "is_correct": true
+      },
+      {
+        "image": "paneer_01.jpg",
+        "category": "foods",
+        "expected": "paneer",
+        "predicted": "paneer",
+        "status": "recognized",
+        "confidence": 0.696,
+        "is_correct": true
+      },
+      {
+        "image": "roti_01.jpg",
+        "category": "foods",
+        "expected": "roti",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.001,
+        "is_correct": false
+      },
+      {
+        "image": "phone_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.004,
+        "is_correct": true
+      },
+      {
+        "image": "laptop_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": true
+      },
+      {
+        "image": "circuit_arduino_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.471,
+        "is_correct": true
+      },
+      {
+        "image": "person_face_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.386,
+        "is_correct": true
+      },
+      {
+        "image": "chair_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.036,
+        "is_correct": true
+      },
+      {
+        "image": "book_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.002,
+        "is_correct": true
+      },
+      {
+        "image": "bottle_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": true
+      },
+      {
+        "image": "watch_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": true
+      },
+      {
+        "image": "car_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": true
+      },
+      {
+        "image": "cat_01.jpg",
+        "category": "non_food",
+        "expected": "non_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": true
+      },
+      {
+        "image": "dal_tadka_01.jpg",
+        "category": "difficult",
+        "expected": "dal",
+        "predicted": "thali_mixed",
+        "status": "recognized",
+        "confidence": 0.451,
+        "is_correct": false
+      },
+      {
+        "image": "mixed_curry_01.jpg",
+        "category": "difficult",
+        "expected": "curry",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.098,
+        "is_correct": false
+      },
+      {
+        "image": "apple_shadow_01.jpg",
+        "category": "difficult",
+        "expected": "apple",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.066,
+        "is_correct": false
+      },
+      {
+        "image": "banana_partial_01.jpg",
+        "category": "difficult",
+        "expected": "banana",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.083,
+        "is_correct": false
+      },
+      {
+        "image": "indian_thali_01.jpg",
+        "category": "difficult",
+        "expected": "thali_mixed",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.0,
+        "is_correct": false
+      },
+      {
+        "image": "rambutan_01.jpg",
+        "category": "unknown",
+        "expected": "unknown_food",
+        "predicted": "non_food",
+        "status": "not_food",
+        "confidence": 0.0,
+        "is_correct": false
+      },
+      {
+        "image": "durian_01.jpg",
+        "category": "unknown",
+        "expected": "unknown_food",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.029,
+        "is_correct": true
+      },
+      {
+        "image": "paella_01.jpg",
+        "category": "unknown",
+        "expected": "unknown_food",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.0,
+        "is_correct": true
+      },
+      {
+        "image": "dimsum_01.jpg",
+        "category": "unknown",
+        "expected": "unknown_food",
+        "predicted": "unknown_food",
+        "status": "uncertain",
+        "confidence": 0.0,
+        "is_correct": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browser Web Serial Connector</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      background-color: transparent;
+      color: #F8FAFC;
+      padding: 4px;
+    }
+    .container {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 8px;
+    }
+    .header {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #94A3B8;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .badge {
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .badge-disconnected {
+      background: #7F1D1D;
+      color: #FCA5A5;
+    }
+    .badge-connected {
+      background: #064E3B;
+      color: #6EE7B7;
+    }
+    .btn {
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-connect {
+      background: #10B981;
+      color: #064E3B;
+    }
+    .btn-connect:hover {
+      background: #059669;
+      color: #FFFFFF;
+    }
+    .btn-disconnect {
+      background: #EF4444;
+      color: #FFFFFF;
+    }
+    .btn-disconnect:hover {
+      background: #DC2626;
+    }
+    .metrics {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      padding: 8px;
+      background: #0F172A;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+    .metric-item {
+      text-align: center;
+    }
+    .metric-label {
+      font-size: 0.7rem;
+      color: #64748B;
+    }
+    .metric-val {
+      font-weight: bold;
+      color: #E2E8F0;
+    }
+    .warning {
+      background: #450A0A;
+      border: 1px solid #DC2626;
+      border-radius: 6px;
+      padding: 10px;
+      color: #FCA5A5;
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+    .footer-note {
+      font-size: 0.75rem;
+      color: #64748B;
+      margin-top: 6px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="app">
+    <div class="header">
+      <span>HARDWARE CONNECTION</span>
+      <span id="statusBadge" class="badge badge-disconnected">Arduino Disconnected</span>
+    </div>
+
+    <div id="unsupportedWarning" class="warning" style="display: none;">
+      ⚠️ <b>Web Serial API is not supported in this browser.</b><br>
+      Please open this application in <b>Google Chrome</b>, <b>Microsoft Edge</b>, or <b>Opera</b> on desktop over HTTPS to connect your Arduino.
+    </div>
+
+    <div id="controlPanel">
+      <button id="connectBtn" class="btn btn-connect" onclick="toggleConnection()">
+        <span>🔌 Connect Arduino</span>
+      </button>
+
+      <div id="telemetrySection" style="display: none;">
+        <div class="metrics">
+          <div class="metric-item">
+            <div class="metric-label">TEMP</div>
+            <div id="tempDisplay" class="metric-val">--.- °C</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-label">HUMIDITY</div>
+            <div id="humDisplay" class="metric-val">--.- %</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-label">GAS/VOC</div>
+            <div id="gasDisplay" class="metric-val">--- ppm</div>
+          </div>
+        </div>
+        <div class="footer-note">Browser Web Serial active (Direct USB)</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // STREAMLIT COMPONENT PROTOCOL & STATE
+    // =========================================================================
+    let port = null;
+    let reader = null;
+    let writer = null;
+    let keepReading = false;
+    let lastSentLcdCmd = "";
+    let lastReportedTime = 0;
+
+    let latestTelemetry = {
+      connected: false,
+      temperature_c: null,
+      humidity_percent: null,
+      gas_value: null,
+      sensor_status: "unavailable",
+      source: "browser_serial",
+      error: null
+    };
+
+    function notifyStreamlit(data) {
+      window.parent.postMessage({
+        isStreamlitMessage: true,
+        type: "streamlit:setComponentValue",
+        value: data
+      }, "*");
+    }
+
+    function setFrameHeight() {
+      window.parent.postMessage({
+        isStreamlitMessage: true,
+        type: "streamlit:setFrameHeight",
+        height: document.body.scrollHeight + 10
+      }, "*");
+    }
+
+    // Handle Render events from Streamlit (to send LCD commands from Python)
+    window.addEventListener("message", function(event) {
+      if (event.data && event.data.type === "streamlit:render") {
+        const args = event.data.args || {};
+        const incomingLcd = args.lcd_command;
+        if (incomingLcd && incomingLcd !== lastSentLcdCmd && writer && port && port.writable) {
+          sendLcdCommand(incomingLcd);
+        }
+      }
+    });
+
+    // Check Web Serial support on load
+    window.addEventListener("DOMContentLoaded", function() {
+      const isSupported = "serial" in navigator;
+      if (!isSupported) {
+        document.getElementById("unsupportedWarning").style.display = "block";
+        document.getElementById("controlPanel").style.display = "none";
+        notifyStreamlit({
+          supported: false,
+          connected: false,
+          error: "Web Serial is not supported in this browser."
+        });
+      }
+      setFrameHeight();
+    });
+
+    // =========================================================================
+    // SERIAL CONNECTION MANAGEMENT
+    // =========================================================================
+    async function toggleConnection() {
+      if (port) {
+        await disconnectArduino();
+      } else {
+        await connectArduino();
+      }
+    }
+
+    async function connectArduino() {
+      if (!("serial" in navigator)) {
+        alert("Web Serial is not supported in this browser. Please use Chrome, Edge, or Opera.");
+        return;
+      }
+
+      try {
+        // Request port with user interaction
+        port = await navigator.serial.requestPort();
+        await port.open({ baudRate: 9600 });
+
+        // Update UI
+        document.getElementById("statusBadge").className = "badge badge-connected";
+        document.getElementById("statusBadge").textContent = "Arduino Connected";
+        document.getElementById("connectBtn").className = "btn btn-disconnect";
+        document.getElementById("connectBtn").innerHTML = "<span>❌ Disconnect Arduino</span>";
+        document.getElementById("telemetrySection").style.display = "block";
+        setFrameHeight();
+
+        // Setup writer
+        const textEncoder = new TextEncoderStream();
+        const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
+        writer = textEncoder.writable.getWriter();
+
+        // Initial LCD State on connection: "Arduino: ONLINE" / "Sensors reading"
+        await sendLcdCommand("LCD:Arduino: ONLINE|Sensors reading\n");
+
+        latestTelemetry.connected = true;
+        latestTelemetry.sensor_status = "active";
+        latestTelemetry.source = "browser_serial";
+        notifyStreamlit(latestTelemetry);
+
+        // Start reading loop
+        keepReading = true;
+        readLoop();
+
+      } catch (err) {
+        console.warn("Serial connection canceled or failed:", err);
+        await disconnectArduino();
+      }
+    }
+
+    async function disconnectArduino() {
+      keepReading = false;
+      if (reader) {
+        try {
+          await reader.cancel();
+        } catch (e) {}
+        reader = null;
+      }
+      if (writer) {
+        try {
+          await writer.close();
+        } catch (e) {}
+        writer = null;
+      }
+      if (port) {
+        try {
+          await port.close();
+        } catch (e) {}
+        port = null;
+      }
+
+      document.getElementById("statusBadge").className = "badge badge-disconnected";
+      document.getElementById("statusBadge").textContent = "Arduino Disconnected";
+      document.getElementById("connectBtn").className = "btn btn-connect";
+      document.getElementById("connectBtn").innerHTML = "<span>🔌 Connect Arduino</span>";
+      document.getElementById("telemetrySection").style.display = "none";
+      document.getElementById("tempDisplay").textContent = "--.- °C";
+      document.getElementById("humDisplay").textContent = "--.- %";
+      document.getElementById("gasDisplay").textContent = "--- ppm";
+      setFrameHeight();
+
+      latestTelemetry = {
+        connected: false,
+        temperature_c: null,
+        humidity_percent: null,
+        gas_value: null,
+        sensor_status: "unavailable",
+        source: "browser_serial",
+        error: null
+      };
+      notifyStreamlit(latestTelemetry);
+    }
+
+    // Auto-handle physical cable disconnect
+    if ("serial" in navigator) {
+      navigator.serial.addEventListener("disconnect", (event) => {
+        console.warn("Arduino physical disconnect event detected");
+        disconnectArduino();
+      });
+    }
+
+    // =========================================================================
+    // SERIAL READ LOOP & JSON PARSER
+    // =========================================================================
+    async function readLoop() {
+      let buffer = "";
+      while (port && port.readable && keepReading) {
+        try {
+          const textDecoder = new TextDecoderStream();
+          const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
+          reader = textDecoder.readable.getReader();
+
+          while (true) {
+            const { value, done } = await reader.read();
+            if (done) break;
+            if (value) {
+              buffer += value;
+              const lines = buffer.split(/[\r\n]+/);
+              buffer = lines.pop(); // Keep incomplete segment in buffer
+
+              for (const line of lines) {
+                const clean = line.trim();
+                if (clean.length > 0) {
+                  parseIncomingTelemetry(clean);
+                }
+              }
+            }
+          }
+        } catch (err) {
+          console.warn("Read loop error:", err);
+          break;
+        } finally {
+          if (reader) {
+            reader.releaseLock();
+          }
+        }
+      }
+      if (keepReading) {
+        disconnectArduino();
+      }
+    }
+
+    function parseIncomingTelemetry(rawLine) {
+      let temp = null;
+      let hum = null;
+      let gas = null;
+
+      // 1. Try JSON: {"temperature_c": 24.5, "humidity_percent": 65.0, "gas_value": 140}
+      if (rawLine.startsWith("{") && rawLine.endsWith("}")) {
+        try {
+          const data = JSON.parse(rawLine);
+          if (data.temperature_c !== undefined && data.temperature_c !== null) temp = parseFloat(data.temperature_c);
+          if (data.humidity_percent !== undefined && data.humidity_percent !== null) hum = parseFloat(data.humidity_percent);
+          if (data.gas_value !== undefined && data.gas_value !== null) gas = parseFloat(data.gas_value);
+        } catch (e) {}
+      }
+
+      // 2. Regex fallback for key-value pairs
+      if (temp === null) {
+        const tMatch = rawLine.match(/(?:temp(?:erature)?|t)\s*[:=]?\s*([+-]?\d+(?:\.\d+)?)/i);
+        if (tMatch) temp = parseFloat(tMatch[1]);
+      }
+      if (hum === null) {
+        const hMatch = rawLine.match(/(?:hum(?:idity)?|h)\s*[:=]?\s*([+-]?\d+(?:\.\d+)?)/i);
+        if (hMatch) hum = parseFloat(hMatch[1]);
+      }
+      if (gas === null) {
+        const gMatch = rawLine.match(/(?:gas|voc|g)\s*[:=]?\s*([+-]?\d+(?:\.\d+)?)/i);
+        if (gMatch) gas = parseFloat(gMatch[1]);
+      }
+
+      // If valid values parsed, update telemetry
+      if (temp !== null || hum !== null || gas !== null) {
+        if (temp !== null && !isNaN(temp)) {
+          latestTelemetry.temperature_c = temp;
+          document.getElementById("tempDisplay").textContent = `${temp.toFixed(1)} °C`;
+        } else {
+          latestTelemetry.temperature_c = null;
+          document.getElementById("tempDisplay").textContent = "--.- °C";
+        }
+        if (hum !== null && !isNaN(hum)) {
+          latestTelemetry.humidity_percent = hum;
+          document.getElementById("humDisplay").textContent = `${hum.toFixed(1)} %`;
+        } else {
+          latestTelemetry.humidity_percent = null;
+          document.getElementById("humDisplay").textContent = "--.- %";
+        }
+        if (gas !== null && !isNaN(gas)) {
+          latestTelemetry.gas_value = gas;
+          document.getElementById("gasDisplay").textContent = `${Math.round(gas)} ppm`;
+        } else {
+          latestTelemetry.gas_value = null;
+          document.getElementById("gasDisplay").textContent = "--- ppm";
+        }
+        latestTelemetry.connected = true;
+        latestTelemetry.sensor_status = "active";
+        latestTelemetry.source = "browser_serial";
+
+        // Throttle updates to Streamlit to avoid excessive reruns (~1 per second)
+        const now = Date.now();
+        if (now - lastReportedTime > 1000) {
+          lastReportedTime = now;
+          notifyStreamlit(latestTelemetry);
+        }
+      }
+    }
+
+    // =========================================================================
+    // LCD COMMAND TRANSMITTER
+    // =========================================================================
+    async function sendLcdCommand(cmd) {
+      if (!writer) return;
+      try {
+        lastSentLcdCmd = cmd;
+        await writer.write(cmd);
+      } catch (err) {
+        console.warn("Failed to write LCD command over serial:", err);
+      }
+    }
+  </script>
+</body>
+</html>
