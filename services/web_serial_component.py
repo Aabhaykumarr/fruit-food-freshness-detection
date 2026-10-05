@@ -25,6 +25,7 @@ _web_serial_component = components.declare_component(
 
 def render_web_serial_connector(
     lcd_command: str = "",
+    pause_telemetry: bool = False,
     key: str = "web_serial_hw_connector",
 ) -> Optional[Dict[str, Any]]:
     """
@@ -32,6 +33,7 @@ def render_web_serial_connector(
 
     Args:
         lcd_command: Outgoing serial command to send to Arduino (e.g. "LCD:Line1|Line2\n").
+        pause_telemetry: Pause browser-to-Streamlit telemetry updates during analysis.
         key: Streamlit component unique key.
 
     Returns:
@@ -48,6 +50,7 @@ def render_web_serial_connector(
     """
     return _web_serial_component(
         lcd_command=lcd_command,
+        pause_telemetry=pause_telemetry,
         key=key,
         default=None,
     )

@@ -15,28 +15,31 @@
       background-color: transparent;
       color: #F8FAFC;
       padding: 4px;
+      overflow: hidden;
     }
     .container {
       background: #1E293B;
       border: 1px solid #334155;
       border-radius: 8px;
       padding: 12px;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
     .header {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 600;
       color: #94A3B8;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 6px;
     }
     .badge {
       font-size: 0.75rem;
       padding: 2px 8px;
       border-radius: 6px;
       font-weight: 600;
+      white-space: nowrap;
     }
     .badge-disconnected {
       background: #7F1D1D;
@@ -48,10 +51,10 @@
     }
     .btn {
       width: 100%;
-      padding: 8px 12px;
+      padding: 10px 12px;
       border-radius: 6px;
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       cursor: pointer;
       border: none;
       transition: all 0.2s ease;
@@ -59,6 +62,7 @@
       justify-content: center;
       align-items: center;
       gap: 6px;
+      user-select: none;
     }
     .btn-connect {
       background: #10B981;
@@ -86,26 +90,30 @@
     }
     .metric-item {
       text-align: center;
+      flex: 1;
     }
     .metric-label {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: #64748B;
+      margin-bottom: 2px;
     }
     .metric-val {
       font-weight: bold;
       color: #E2E8F0;
+      font-size: 0.85rem;
     }
     .warning {
       background: #450A0A;
       border: 1px solid #DC2626;
       border-radius: 6px;
-      padding: 10px;
+      padding: 8px 10px;
       color: #FCA5A5;
-      font-size: 0.8rem;
-      line-height: 1.4;
+      font-size: 0.78rem;
+      line-height: 1.35;
+      margin-top: 8px;
     }
     .footer-note {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: #64748B;
       margin-top: 6px;
       text-align: center;
@@ -116,18 +124,20 @@
   <div class="container" id="app">
     <div class="header">
       <span>HARDWARE CONNECTION</span>
-      <span id="statusBadge" class="badge badge-disconnected">Arduino Disconnected</span>
+      <span id="statusBadge" class="badge badge-disconnected">Disconnected</span>
     </div>
 
     <div id="unsupportedWarning" class="warning" style="display: none;">
       ⚠️ <b>Web Serial API is not supported in this browser.</b><br>
-      Please open this application in <b>Google Chrome</b>, <b>Microsoft Edge</b>, or <b>Opera</b> on desktop over HTTPS to connect your Arduino.
+      Please open this app in <b>Google Chrome</b> or <b>Microsoft Edge</b> on desktop.
     </div>
 
     <div id="controlPanel">
-      <button id="connectBtn" class="btn btn-connect" onclick="toggleConnection()">
+      <button id="connectBtn" class="btn btn-connect" type="button" onclick="toggleConnection()">
         <span>🔌 Connect Arduino</span>
       </button>
+
+      <div id="errorBox" class="warning" style="display: none;"></div>
 
       <div id="telemetrySection" style="display: none;">
         <div class="metrics">
@@ -141,7 +151,7 @@
           </div>
           <div class="metric-item">
             <div class="metric-label">GAS/VOC</div>
-            <div id="gasDisplay" class="metric-val">--- ppm</div>
+            <div id="gasDisplay" class="metric-val">N/A</div>
           </div>
         </div>
         <div class="footer-note">Browser Web Serial active (Direct USB)</div>
@@ -159,6 +169,7 @@
     let keepReading = false;
     let lastSentLcdCmd = "";
     let lastReportedTime = 0;
+    let telemetryPaused = false;
 
     let latestTelemetry = {
       connected: false,
@@ -170,6 +181,14 @@
       error: null
     };
 
+    function sendComponentReady() {
+      window.parent.postMessage({
+        isStreamlitMessage: true,
+        type: "streamlit:componentReady",
+        apiVersion: 1
+      }, "*");
+    }
+
     function notifyStreamlit(data) {
       window.parent.postMessage({
         isStreamlitMessage: true,
@@ -179,26 +198,57 @@
     }
 
     function setFrameHeight() {
+      const el = document.getElementById("app");
+      const height = el ? el.offsetHeight + 16 : (document.body.scrollHeight + 10);
       window.parent.postMessage({
         isStreamlitMessage: true,
         type: "streamlit:setFrameHeight",
-        height: document.body.scrollHeight + 10
+        height: Math.max(height, 80)
       }, "*");
     }
 
-    // Handle Render events from Streamlit (to send LCD commands from Python)
+    function showError(msg) {
+      const box = document.getElementById("errorBox");
+      if (box) {
+        box.innerHTML = `⚠️ ${msg}`;
+        box.style.display = "block";
+      }
+      setFrameHeight();
+    }
+
+    function clearError() {
+      const box = document.getElementById("errorBox");
+      if (box) {
+        box.innerHTML = "";
+        box.style.display = "none";
+      }
+      setFrameHeight();
+    }
+
+    // Handle Render events from Streamlit (to receive args like LCD commands)
     window.addEventListener("message", function(event) {
       if (event.data && event.data.type === "streamlit:render") {
         const args = event.data.args || {};
         const incomingLcd = args.lcd_command;
+        const shouldPauseTelemetry = Boolean(args.pause_telemetry);
+        if (shouldPauseTelemetry !== telemetryPaused) {
+          telemetryPaused = shouldPauseTelemetry;
+          latestTelemetry.analysis_paused = telemetryPaused;
+          if (latestTelemetry.connected) {
+            notifyStreamlit(latestTelemetry);
+          }
+        }
         if (incomingLcd && incomingLcd !== lastSentLcdCmd && writer && port && port.writable) {
           sendLcdCommand(incomingLcd);
         }
+        setFrameHeight();
       }
     });
 
-    // Check Web Serial support on load
-    window.addEventListener("DOMContentLoaded", function() {
+    // Initialize component on load
+    function initComponent() {
+      sendComponentReady();
+
       const isSupported = "serial" in navigator;
       if (!isSupported) {
         document.getElementById("unsupportedWarning").style.display = "block";
@@ -206,18 +256,29 @@
         notifyStreamlit({
           supported: false,
           connected: false,
-          error: "Web Serial is not supported in this browser."
+          error: "Web Serial is not supported in this browser. Use Chrome or Edge."
         });
       }
       setFrameHeight();
-    });
+
+      if (window.ResizeObserver) {
+        const ro = new ResizeObserver(() => setFrameHeight());
+        ro.observe(document.body);
+      }
+    }
+
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+      initComponent();
+    } else {
+      window.addEventListener("DOMContentLoaded", initComponent);
+    }
 
     // =========================================================================
-    // SERIAL CONNECTION MANAGEMENT
+    // SERIAL CONNECTION MANAGEMENT (Triggered synchronously by user click)
     // =========================================================================
     async function toggleConnection() {
       if (port) {
-        await disconnectArduino();
+        await disconnectArduino(true);
       } else {
         await connectArduino();
       }
@@ -225,47 +286,88 @@
 
     async function connectArduino() {
       if (!("serial" in navigator)) {
-        alert("Web Serial is not supported in this browser. Please use Chrome, Edge, or Opera.");
+        showError("Web Serial is not supported in this browser. Please use Chrome or Edge.");
+        notifyStreamlit({
+          supported: false,
+          connected: false,
+          error: "Web Serial is not supported in this browser."
+        });
         return;
       }
 
-      try {
-        // Request port with user interaction
-        port = await navigator.serial.requestPort();
-        await port.open({ baudRate: 9600 });
+      clearError();
 
-        // Update UI
+      // Step 1: Request port (must be executed directly in the user click event call-stack)
+      try {
+        port = await navigator.serial.requestPort();
+      } catch (err) {
+        console.warn("Serial port selection canceled or denied:", err);
+        const isCancel = err.name === "NotFoundError" || (err.message && err.message.includes("No port selected"));
+        const errMsg = isCancel ? "Port selection was canceled." : (err.message || "Failed to select serial port.");
+        showError(errMsg);
+        latestTelemetry.connected = false;
+        latestTelemetry.sensor_status = "unavailable";
+        latestTelemetry.error = errMsg;
+        notifyStreamlit(latestTelemetry);
+        return;
+      }
+
+      // Step 2: Open port at 9600 baud
+      try {
+        await port.open({ baudRate: 9600 });
+      } catch (err) {
+        console.warn("Failed to open serial port:", err);
+        let errMsg = err.message || "Failed to open serial port.";
+        if (err.name === "InvalidStateError" || errMsg.includes("already open") || errMsg.includes("access") || errMsg.includes("busy")) {
+          errMsg = "Port is busy or already in use. Ensure Local Python Serial mode and Arduino IDE Serial Monitor are closed.";
+        }
+        showError(errMsg);
+        try {
+          await port.close();
+        } catch (e) {}
+        port = null;
+        latestTelemetry.connected = false;
+        latestTelemetry.sensor_status = "unavailable";
+        latestTelemetry.error = errMsg;
+        notifyStreamlit(latestTelemetry);
+        return;
+      }
+
+      // Step 3: Setup streams and update UI
+      try {
         document.getElementById("statusBadge").className = "badge badge-connected";
-        document.getElementById("statusBadge").textContent = "Arduino Connected";
+        document.getElementById("statusBadge").textContent = "Connected";
         document.getElementById("connectBtn").className = "btn btn-disconnect";
         document.getElementById("connectBtn").innerHTML = "<span>❌ Disconnect Arduino</span>";
         document.getElementById("telemetrySection").style.display = "block";
+        clearError();
         setFrameHeight();
 
         // Setup writer
         const textEncoder = new TextEncoderStream();
-        const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
+        textEncoder.readable.pipeTo(port.writable).catch((e) => console.warn("Writer stream closed:", e));
         writer = textEncoder.writable.getWriter();
 
-        // Initial LCD State on connection: "Arduino: ONLINE" / "Sensors reading"
+        // Send connected LCD message: "Arduino: ONLINE" / "Sensors reading"
         await sendLcdCommand("LCD:Arduino: ONLINE|Sensors reading\n");
 
         latestTelemetry.connected = true;
         latestTelemetry.sensor_status = "active";
         latestTelemetry.source = "browser_serial";
+        latestTelemetry.error = null;
         notifyStreamlit(latestTelemetry);
 
-        // Start reading loop
+        // Start read loop
         keepReading = true;
         readLoop();
-
       } catch (err) {
-        console.warn("Serial connection canceled or failed:", err);
-        await disconnectArduino();
+        console.error("Error setting up connection:", err);
+        showError(err.message || "Failed to establish communication stream.");
+        await disconnectArduino(false);
       }
     }
 
-    async function disconnectArduino() {
+    async function disconnectArduino(userInitiated = true) {
       keepReading = false;
       if (reader) {
         try {
@@ -287,13 +389,17 @@
       }
 
       document.getElementById("statusBadge").className = "badge badge-disconnected";
-      document.getElementById("statusBadge").textContent = "Arduino Disconnected";
+      document.getElementById("statusBadge").textContent = "Disconnected";
       document.getElementById("connectBtn").className = "btn btn-connect";
       document.getElementById("connectBtn").innerHTML = "<span>🔌 Connect Arduino</span>";
       document.getElementById("telemetrySection").style.display = "none";
       document.getElementById("tempDisplay").textContent = "--.- °C";
       document.getElementById("humDisplay").textContent = "--.- %";
-      document.getElementById("gasDisplay").textContent = "--- ppm";
+      document.getElementById("gasDisplay").textContent = "N/A";
+
+      if (userInitiated) {
+        clearError();
+      }
       setFrameHeight();
 
       latestTelemetry = {
@@ -303,21 +409,22 @@
         gas_value: null,
         sensor_status: "unavailable",
         source: "browser_serial",
-        error: null
+        error: userInitiated ? null : latestTelemetry.error
       };
       notifyStreamlit(latestTelemetry);
     }
 
-    // Auto-handle physical cable disconnect
+    // Auto-handle physical cable unplug
     if ("serial" in navigator) {
       navigator.serial.addEventListener("disconnect", (event) => {
-        console.warn("Arduino physical disconnect event detected");
-        disconnectArduino();
+        console.warn("Arduino physical disconnect detected");
+        showError("Device disconnected unexpectedly.");
+        disconnectArduino(false);
       });
     }
 
     // =========================================================================
-    // SERIAL READ LOOP & JSON PARSER
+    // SERIAL READ LOOP & JSON TELEMETRY PARSER
     // =========================================================================
     async function readLoop() {
       let buffer = "";
@@ -333,7 +440,7 @@
             if (value) {
               buffer += value;
               const lines = buffer.split(/[\r\n]+/);
-              buffer = lines.pop(); // Keep incomplete segment in buffer
+              buffer = lines.pop(); // Keep partial line in buffer
 
               for (const line of lines) {
                 const clean = line.trim();
@@ -344,50 +451,59 @@
             }
           }
         } catch (err) {
-          console.warn("Read loop error:", err);
+          if (keepReading) {
+            console.warn("Read loop error:", err);
+            showError(`Read error: ${err.message || err}`);
+          }
           break;
         } finally {
           if (reader) {
-            reader.releaseLock();
+            try {
+              reader.releaseLock();
+            } catch (e) {}
           }
         }
       }
       if (keepReading) {
-        disconnectArduino();
+        disconnectArduino(false);
       }
     }
 
     function parseIncomingTelemetry(rawLine) {
+      // Keep draining the serial stream while analysis runs, but hold the
+      // displayed and Python-side reading at the value captured on button press.
+      if (telemetryPaused) return;
+
       let temp = null;
       let hum = null;
       let gas = null;
+      let isParsed = false;
 
-      // 1. Try JSON: {"temperature_c": 24.5, "humidity_percent": 65.0, "gas_value": 140}
+      // 1. Try JSON packet: {"temperature_c": 24.5, "humidity_percent": 65.0, "gas_value": null, ...}
       if (rawLine.startsWith("{") && rawLine.endsWith("}")) {
         try {
           const data = JSON.parse(rawLine);
           if (data.temperature_c !== undefined && data.temperature_c !== null) temp = parseFloat(data.temperature_c);
           if (data.humidity_percent !== undefined && data.humidity_percent !== null) hum = parseFloat(data.humidity_percent);
           if (data.gas_value !== undefined && data.gas_value !== null) gas = parseFloat(data.gas_value);
+          isParsed = true;
         } catch (e) {}
       }
 
-      // 2. Regex fallback for key-value pairs
-      if (temp === null) {
+      // 2. Regex fallback for key-value text
+      if (!isParsed) {
         const tMatch = rawLine.match(/(?:temp(?:erature)?|t)\s*[:=]?\s*([+-]?\d+(?:\.\d+)?)/i);
-        if (tMatch) temp = parseFloat(tMatch[1]);
-      }
-      if (hum === null) {
+        if (tMatch) { temp = parseFloat(tMatch[1]); isParsed = true; }
+
         const hMatch = rawLine.match(/(?:hum(?:idity)?|h)\s*[:=]?\s*([+-]?\d+(?:\.\d+)?)/i);
-        if (hMatch) hum = parseFloat(hMatch[1]);
-      }
-      if (gas === null) {
+        if (hMatch) { hum = parseFloat(hMatch[1]); isParsed = true; }
+
         const gMatch = rawLine.match(/(?:gas|voc|g)\s*[:=]?\s*([+-]?\d+(?:\.\d+)?)/i);
-        if (gMatch) gas = parseFloat(gMatch[1]);
+        if (gMatch) { gas = parseFloat(gMatch[1]); isParsed = true; }
       }
 
-      // If valid values parsed, update telemetry
-      if (temp !== null || hum !== null || gas !== null) {
+      // Update telemetry if recognized packet
+      if (isParsed) {
         if (temp !== null && !isNaN(temp)) {
           latestTelemetry.temperature_c = temp;
           document.getElementById("tempDisplay").textContent = `${temp.toFixed(1)} °C`;
@@ -395,6 +511,7 @@
           latestTelemetry.temperature_c = null;
           document.getElementById("tempDisplay").textContent = "--.- °C";
         }
+
         if (hum !== null && !isNaN(hum)) {
           latestTelemetry.humidity_percent = hum;
           document.getElementById("humDisplay").textContent = `${hum.toFixed(1)} %`;
@@ -402,18 +519,21 @@
           latestTelemetry.humidity_percent = null;
           document.getElementById("humDisplay").textContent = "--.- %";
         }
+
         if (gas !== null && !isNaN(gas)) {
           latestTelemetry.gas_value = gas;
           document.getElementById("gasDisplay").textContent = `${Math.round(gas)} ppm`;
         } else {
           latestTelemetry.gas_value = null;
-          document.getElementById("gasDisplay").textContent = "--- ppm";
+          document.getElementById("gasDisplay").textContent = "N/A";
         }
-        latestTelemetry.connected = true;
-        latestTelemetry.sensor_status = "active";
-        latestTelemetry.source = "browser_serial";
 
-        // Throttle updates to Streamlit to avoid excessive reruns (~1 per second)
+        latestTelemetry.connected = true;
+        latestTelemetry.sensor_status = (temp !== null || hum !== null) ? "active" : "unavailable";
+        latestTelemetry.source = "browser_serial";
+        latestTelemetry.error = null;
+
+        // Throttle updates to Streamlit to avoid excessive UI reruns (~1 per second)
         const now = Date.now();
         if (now - lastReportedTime > 1000) {
           lastReportedTime = now;
@@ -426,7 +546,7 @@
     // LCD COMMAND TRANSMITTER
     // =========================================================================
     async function sendLcdCommand(cmd) {
-      if (!writer) return;
+      if (!writer || !port || !port.writable) return;
       try {
         lastSentLcdCmd = cmd;
         await writer.write(cmd);

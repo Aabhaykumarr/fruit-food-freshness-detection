@@ -54,6 +54,51 @@ from utils.lcd_helper import (
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
+def _queue_freshness_analysis(
+    temperature_c: Optional[float],
+    humidity_percent: Optional[float],
+    gas_value: Optional[float],
+    sensor_source: str,
+    sensor_status: str,
+):
+    """Latch the sensor values and pause browser telemetry before analysis starts."""
+    snapshot = {
+        "temperature_c": temperature_c,
+        "humidity_percent": humidity_percent,
+        "gas_value": gas_value,
+        "sensor_status": sensor_status,
+        "sensor_scope": "environment",
+        "source": sensor_source,
+        "timestamp": datetime.now().isoformat(),
+        "captured_at": datetime.now().isoformat(),
+        "is_triggered_reading": True,
+    }
+
+    # Local Python Serial can sample its background reader at the actual click.
+    local_service = st.session_state.get("local_sensor_svc")
+    if sensor_source == "local_serial" and local_service is not None:
+        latest = local_service.capture_snapshot()
+        snapshot.update({
+            key: latest.get(key, snapshot.get(key))
+            for key in ("temperature_c", "humidity_percent", "gas_value", "sensor_status", "timestamp", "captured_at", "is_triggered_reading")
+        })
+    elif sensor_source == "browser_serial":
+        latest = st.session_state.get("browser_web_serial_connector")
+        if isinstance(latest, dict) and latest.get("connected"):
+            for key in ("temperature_c", "humidity_percent", "gas_value"):
+                if key in latest:
+                    snapshot[key] = latest[key]
+            snapshot["sensor_status"] = latest.get("sensor_status", sensor_status)
+            snapshot["captured_at"] = datetime.now().isoformat()
+
+    st.session_state.analysis_sensor_snapshot = snapshot
+    st.session_state.analysis_pending = True
+    st.session_state.analysis_running = True
+    st.session_state.current_lcd_command = build_lcd_command("Analyzing...", "Please wait...")
+    if local_service is not None and sensor_source == "local_serial":
+        local_service.send_lcd_message("Analyzing...", "Please wait...")
+
 # =============================================================================
 # STREAMLIT PAGE CONFIG & STYLES
 # =============================================================================
@@ -264,9 +309,9 @@ def main():
         help="Select Browser Web Serial (for deployed Render HTTPS), Local Python Serial, or simulation modes.",
     )
 
-    temp_c = 24.5
-    hum_pct = 55.0
-    gas_val = 145.0
+    temp_c: Optional[float] = None
+    hum_pct: Optional[float] = None
+    gas_val: Optional[float] = None
     sensor_source_name = "manual_slider"
     sensor_status_str = "active"
     local_hw_svc: Optional[SensorService] = None
@@ -284,22 +329,21 @@ def main():
         st.sidebar.caption("🌐 **Browser Web Serial** connects directly to your USB Arduino from Chrome / Edge over HTTPS.")
         web_serial_data = render_web_serial_connector(
             lcd_command=st.session_state.get("current_lcd_command", ""),
+            pause_telemetry=bool(st.session_state.get("analysis_running", False)),
             key="browser_web_serial_connector",
         )
         if web_serial_data and web_serial_data.get("connected"):
-            if web_serial_data.get("temperature_c") is not None:
-                temp_c = float(web_serial_data["temperature_c"])
-            if web_serial_data.get("humidity_percent") is not None:
-                hum_pct = float(web_serial_data["humidity_percent"])
-            if web_serial_data.get("gas_value") is not None:
-                gas_val = float(web_serial_data["gas_value"])
+            temp_c = float(web_serial_data["temperature_c"]) if web_serial_data.get("temperature_c") is not None else None
+            hum_pct = float(web_serial_data["humidity_percent"]) if web_serial_data.get("humidity_percent") is not None else None
+            gas_val = float(web_serial_data["gas_value"]) if web_serial_data.get("gas_value") is not None else None
             sensor_source_name = "browser_serial"
-            sensor_status_str = "active"
+            sensor_status_str = "active" if (temp_c is not None or hum_pct is not None or gas_val is not None) else "unavailable"
+            temp_disp = f"{temp_c:.1f}°C" if temp_c is not None else "--.-°C"
+            hum_disp = f"{hum_pct:.1f}%" if hum_pct is not None else "--.-%"
+            gas_disp = f"{int(gas_val)} ppm" if gas_val is not None else "N/A"
             st.sidebar.success(
                 f"🟢 Arduino Connected (Browser Serial)\n\n"
-                f"🌡️ {f'{temp_c:.1f}°C' if web_serial_data.get('temperature_c') is not None else '--.-°C'} | "
-                f"💧 {f'{hum_pct:.1f}%' if web_serial_data.get('humidity_percent') is not None else '--.-%'} | "
-                f"💨 {int(gas_val)} ppm"
+                f"🌡️ {temp_disp} | 💧 {hum_disp} | 💨 {gas_disp}"
             )
         elif web_serial_data and web_serial_data.get("error"):
             sensor_source_name = "none"
@@ -330,26 +374,35 @@ def main():
 
             local_hw_svc = st.session_state.local_sensor_svc
             reading = local_hw_svc.get_latest_reading()
-            if reading.get("temperature_c") is not None or reading.get("gas_value") is not None:
-                if reading.get("temperature_c") is not None:
-                    temp_c = float(reading["temperature_c"])
-                if reading.get("humidity_percent") is not None:
-                    hum_pct = float(reading["humidity_percent"])
-                if reading.get("gas_value") is not None:
-                    gas_val = float(reading["gas_value"])
+            has_reading = (
+                reading.get("temperature_c") is not None
+                or reading.get("humidity_percent") is not None
+                or reading.get("gas_value") is not None
+            )
+            if has_reading:
+                temp_c = float(reading["temperature_c"]) if reading.get("temperature_c") is not None else None
+                hum_pct = float(reading["humidity_percent"]) if reading.get("humidity_percent") is not None else None
+                gas_val = float(reading["gas_value"]) if reading.get("gas_value") is not None else None
                 sensor_source_name = "local_serial"
                 sensor_status_str = "active"
+                temp_disp = f"{temp_c:.1f}°C" if temp_c is not None else "--.-°C"
+                hum_disp = f"{hum_pct:.1f}%" if hum_pct is not None else "--.-%"
+                gas_disp = f"{int(gas_val)} ppm" if gas_val is not None else "N/A"
                 st.sidebar.success(
                     f"🟢 Connected (Local Serial)\n\n"
-                    f"🌡️ {f'{temp_c:.1f}°C' if reading.get('temperature_c') is not None else '--.-°C'} | "
-                    f"💧 {f'{hum_pct:.1f}%' if reading.get('humidity_percent') is not None else '--.-%'} | "
-                    f"💨 {int(gas_val)} ppm"
+                    f"🌡️ {temp_disp} | 💧 {hum_disp} | 💨 {gas_disp}"
                 )
             else:
+                temp_c = None
+                hum_pct = None
+                gas_val = None
                 sensor_source_name = "local_serial"
                 sensor_status_str = "unavailable"
                 st.sidebar.warning("Arduino connected on local serial, awaiting telemetry...")
         except Exception as err:
+            temp_c = None
+            hum_pct = None
+            gas_val = None
             sensor_source_name = "none"
             sensor_status_str = "unavailable"
             st.sidebar.error(f"Serial Error: {err}. Using ambient fallback.")
@@ -415,7 +468,7 @@ def main():
         camera_img = st.camera_input("Point camera at item and click Take Photo")
         if camera_img is not None:
             image_input = Image.open(camera_img).convert("RGB")
-            input_source_name = f"camera_{datetime.now().strftime('%H%M%S')}.jpg"
+            input_source_name = getattr(camera_img, "name", "camera_capture.jpg") or "camera_capture.jpg"
             st.session_state.selected_sample_path = None
 
     # Tab 3: Sample Gallery
@@ -464,23 +517,77 @@ def main():
             st.subheader("1️⃣ Input Image")
             st.image(image_input, caption=f"Source: {input_source_name}", use_container_width=True)
 
-            # Telemetry snapshot card
+            # Keep the result card tied to the sensor values actually used by
+            # the latest analysis; otherwise show the current live readings.
+            shown_snapshot = None
+            if st.session_state.get("analysis_pending"):
+                shown_snapshot = st.session_state.get("analysis_sensor_snapshot")
+            elif st.session_state.get("analyzed_image_source") == input_source_name:
+                shown_snapshot = st.session_state.get("last_analysis_sensor_snapshot")
+            shown_snapshot = shown_snapshot or {}
+            shown_temp = shown_snapshot.get("temperature_c", temp_c)
+            shown_humidity = shown_snapshot.get("humidity_percent", hum_pct)
+            shown_gas = shown_snapshot.get("gas_value", gas_val)
+            telemetry_heading = "SENSOR SNAPSHOT FOR ANALYSIS" if shown_snapshot else "LIVE ENVIRONMENTAL TELEMETRY"
+            temp_card_disp = f"{shown_temp:.1f}°C" if shown_temp is not None else "--.-°C"
+            hum_card_disp = f"{shown_humidity:.1f}%" if shown_humidity is not None else "--.-%"
+            gas_card_disp = f"{int(shown_gas)} ppm" if shown_gas is not None else "N/A"
             st.markdown(f"""
             <div class="telemetry-box">
-                <div style="font-weight: 600; color: #94A3B8; margin-bottom: 6px;">ENVIRONMENTAL TELEMETRY</div>
+                <div style="font-weight: 600; color: #94A3B8; margin-bottom: 6px;">{telemetry_heading}</div>
                 <div style="display: flex; justify-content: space-between;">
-                    <div>🌡️ <b>Temp:</b> {temp_c}°C</div>
-                    <div>💧 <b>Humidity:</b> {hum_pct}%</div>
-                    <div>💨 <b>Gas/VOC:</b> {gas_val} ppm</div>
+                    <div>🌡️ <b>Temp:</b> {temp_card_disp}</div>
+                    <div>💧 <b>Humidity:</b> {hum_card_disp}</div>
+                    <div>💨 <b>Gas/VOC:</b> {gas_card_disp}</div>
                 </div>
                 <div style="font-size: 0.8rem; color: #64748B; margin-top: 6px;">Sensor Source: {sensor_source_name} (ambient scope)</div>
             </div>
             """, unsafe_allow_html=True)
 
-            analyze_btn = st.button("🚀 Analyze Freshness & Quality", type="primary", use_container_width=True)
+            # Reset LCD prompt to idle only if a brand new unanalyzed image was selected/uploaded
+            if (
+                st.session_state.get("analyzed_image_source") != input_source_name
+                and not st.session_state.get("analysis_pending", False)
+                and not st.session_state.get("analysis_running", False)
+            ):
+                idle_lcd_cmd = build_lcd_command("Put food near", "Upload image")
+                if st.session_state.get("current_lcd_command") != idle_lcd_cmd:
+                    st.session_state.current_lcd_command = idle_lcd_cmd
+                    if local_hw_svc is not None:
+                        local_hw_svc.send_lcd_message("Put food near", "Upload image")
+            elif (
+                st.session_state.get("analyzed_image_source") == input_source_name
+                and st.session_state.get("last_lcd_result_cmd")
+                and not st.session_state.get("analysis_pending", False)
+                and not st.session_state.get("analysis_running", False)
+            ):
+                # Keep the result LCD command latched across UI reruns until a new scan begins
+                if st.session_state.get("current_lcd_command") != st.session_state.last_lcd_result_cmd:
+                    st.session_state.current_lcd_command = st.session_state.last_lcd_result_cmd
+
+            analyze_btn = st.button(
+                "🚀 Analyze Freshness & Quality",
+                type="primary",
+                use_container_width=True,
+                disabled=bool(st.session_state.get("analysis_running", False)),
+                on_click=_queue_freshness_analysis,
+                args=(temp_c, hum_pct, gas_val, sensor_source_name, sensor_status_str),
+            )
 
         # Trigger analysis when button is pressed
-        if analyze_btn:
+        analysis_pending = bool(st.session_state.get("analysis_pending", False))
+        browser_snapshot_paused = bool((web_serial_data or {}).get("analysis_paused"))
+        waiting_for_browser_pause = (
+            analysis_pending
+            and sensor_source_name == "browser_serial"
+            and bool((web_serial_data or {}).get("connected"))
+            and not browser_snapshot_paused
+        )
+
+        if waiting_for_browser_pause:
+            st.info("Freezing the current sensor readings for this analysis…")
+
+        if analysis_pending and not waiting_for_browser_pause:
             # LCD State 5: ANALYZING
             lcd_analyzing_cmd = build_lcd_command("Analyzing...", "Please wait...")
             st.session_state.current_lcd_command = lcd_analyzing_cmd
@@ -492,15 +599,18 @@ def main():
                 vision_res = vision_service.analyze_image(image_input)
 
                 # Step 2: Build sensor snapshot
-                sensor_reading = {
-                    "temperature_c": temp_c,
-                    "humidity_percent": hum_pct,
-                    "gas_value": gas_val,
-                    "sensor_status": sensor_status_str,
-                    "sensor_scope": "environment",
-                    "source": sensor_source_name,
-                    "timestamp": datetime.now().isoformat(),
-                }
+                sensor_reading = dict(st.session_state.get("analysis_sensor_snapshot", {}))
+                if not sensor_reading:
+                    sensor_reading = {
+                        "temperature_c": temp_c,
+                        "humidity_percent": hum_pct,
+                        "gas_value": gas_val,
+                        "sensor_status": sensor_status_str,
+                        "sensor_scope": "environment",
+                        "source": sensor_source_name,
+                        "timestamp": datetime.now().isoformat(),
+                    }
+                st.session_state.last_analysis_sensor_snapshot = dict(sensor_reading)
 
                 # Step 3: Fetch history
                 item_name = vision_res.get("name")
@@ -528,6 +638,7 @@ def main():
                 )
                 lcd_result_cmd = build_lcd_command(l1_res, l2_res)
                 st.session_state.current_lcd_command = lcd_result_cmd
+                st.session_state.last_lcd_result_cmd = lcd_result_cmd
                 if local_hw_svc is not None:
                     local_hw_svc.send_lcd_message(l1_res, l2_res)
 
@@ -544,10 +655,10 @@ def main():
                     "overall_visual_summary": vision_res.get("overall_visual_summary"),
                     "items": vision_res.get("items", []),
                     "vision_source": vision_res.get("source", "gemini"),
-                    "temperature_c": temp_c,
-                    "humidity_percent": hum_pct,
-                    "gas_value": gas_val,
-                    "sensor_source": sensor_source_name,
+                    "temperature_c": sensor_reading.get("temperature_c"),
+                    "humidity_percent": sensor_reading.get("humidity_percent"),
+                    "gas_value": sensor_reading.get("gas_value"),
+                    "sensor_source": sensor_reading.get("source", sensor_source_name),
                     "freshness_status": analysis_result.freshness_status,
                     "estimated_shelf_life": f"{analysis_result.estimated_remaining_freshness.value} {analysis_result.estimated_remaining_freshness.unit}",
                     "shelf_life_range": analysis_result.estimated_remaining_freshness.range_description,
@@ -558,6 +669,9 @@ def main():
                     "uncertainty_factors": analysis_result.uncertainty_factors,
                 }
                 st.session_state.chat_history = []
+                st.session_state.analysis_pending = False
+                st.session_state.analysis_running = False
+                st.rerun()
 
         with col_right:
             st.subheader("2️⃣ Analysis & Results")
